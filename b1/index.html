@@ -165,6 +165,36 @@ mark{background:var(--mark);color:inherit;border-radius:3px;padding:0 .15em}
 .ans.bad{background:var(--bad-soft);border-color:var(--bad)}.ans.bad .mk{background:var(--bad)}
 .ans.bad b{text-decoration:line-through;text-decoration-thickness:2px}
 .fb .row{margin-top:.8rem}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:.8rem}
+.seg button{font:inherit;background:var(--surface);color:var(--ink);border:0;padding:.4rem 1rem;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);font-weight:700}
+.tform{margin-top:.4rem}
+.czchip{display:inline-flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;background:var(--accent-soft);color:var(--accent);border-radius:10px;padding:.3rem .8rem;margin-bottom:.4rem}
+.czchip .czw{font-weight:700;font-size:clamp(1.3rem,4vw,1.7rem)}
+.czchip small{color:var(--muted);font-size:.95rem;font-style:italic}
+.czchip small.avoid{color:var(--bad);font-style:normal;font-weight:700}
+.tsent{font-size:clamp(1.4rem,4.4vw,1.9rem);line-height:1.9;margin:.6rem 0 .2rem}
+.tsent .icon-btn{vertical-align:middle;margin-left:.2rem}
+.tin{font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:3px solid var(--accent);border-radius:0;padding:0 .3em;text-align:center;outline:none}
+.tin::placeholder{color:var(--accent);opacity:.55}
+.tin:focus{background:var(--accent-soft)}
+.in-gap{width:8ch;max-width:100%}
+.in-line{display:block;width:min(100%,20rem);font-size:clamp(1.5rem,5vw,2.1rem);text-align:left}
+.tline{font-size:clamp(1.6rem,5vw,2.2rem);margin:.8rem 0 .2rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;min-height:3rem}
+.ltop{display:flex;align-items:center;gap:1.2rem}
+.bigplay{width:5rem;height:5rem;border-radius:50%;border:0;background:var(--accent);color:var(--accent-ink);cursor:pointer;display:grid;place-items:center;padding:0}
+.bigplay svg{width:2.2rem;height:2.2rem;fill:currentColor}
+.rok{color:var(--good);font-weight:700;background:var(--good-soft);border-bottom:3px solid var(--good);padding:0 .3em;border-radius:4px 4px 0 0}
+.rno{color:var(--bad);text-decoration:line-through;background:var(--bad-soft);padding:0 .3em;border-radius:4px;margin-right:.4em}
+.tex{color:var(--muted);font-size:1.1rem;margin-top:.2rem}
+.tex mark{background:var(--mark);color:var(--ink);padding:0 .15em;border-radius:3px}
+.tact{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;margin-top:1rem;min-height:2.8rem}
+.tact.done .btn{margin-left:auto}
+.linkbtn{font:inherit;font-size:.95rem;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:.2rem}
+.hintout{color:var(--muted);font-size:.95rem}
+.rmsg{font-weight:700;font-size:1.1rem}
+.rmsg.good{color:var(--good)}.rmsg.bad{color:var(--bad)}
+
 .qbar{display:flex;justify-content:space-between;color:var(--muted);font-weight:700;margin-bottom:.4rem;max-width:680px}
 .prog{max-width:680px}
 .result{max-width:680px}
@@ -351,6 +381,7 @@ const MODES = {
   listen:  { title: 'Listen and type',    desc: 'Listen to the word and type what you hear.' }
 };
 let pendingDeck = null;
+let cardDir = 'en';   // flashcards: 'en' = English first, 'cz' = Czech first
 
 function setPage(n){
   data.last = n; save();
@@ -410,13 +441,21 @@ function cards(n){
   function render(){
     if (i >= deck.length) return done();
     const w = deck[i];
-    const card = el('div', { class: 'card', role: 'button', tabindex: '0', 'aria-pressed': 'false', 'aria-label': 'Flashcard ' + wordLabel(w) + '. Press to flip.', onclick: flip },
-      el('span', { class: 'face front' }, el('span', { class: 'wordline' }, el('span', { class: 'big', text: w.head }), speakBtn(w.head, 'Listen: ' + w.head)), w.note ? el('span', { class: 'pos', text: '(' + w.note + ')' }) : null, el('span', { class: 'pos', text: w.pos })),
-      el('span', { class: 'face rear' }, el('span', { class: 'cz-big', text: w.cz }), el('span', { class: 'exrow' }, el('span', { class: 'ex' }, sentenceWithMark(w)), speakBtn(w.sent, 'Listen to the example sentence'))));
+    const toEn = cardDir === 'cz';
+    const enSide = [el('span', { class: 'wordline' }, el('span', { class: 'big', text: w.head }), speakBtn(w.head, 'Listen: ' + w.head)), w.note ? el('span', { class: 'pos', text: '(' + w.note + ')' }) : null, el('span', { class: 'pos', text: w.pos })];
+    const czSide = [el('span', { class: 'cz-big', text: w.cz }), el('span', { class: 'pos', text: w.pos + (w.note ? ', ' + w.note : '') })];
+    const exSide = el('span', { class: 'exrow' }, el('span', { class: 'ex' }, sentenceWithMark(w)), speakBtn(w.sent, 'Listen to the example sentence'));
+    const card = el('div', { class: 'card', role: 'button', tabindex: '0', 'aria-pressed': 'false', 'aria-label': 'Flashcard ' + (toEn ? w.cz : wordLabel(w)) + '. Press to flip.', onclick: flip },
+      el('span', { class: 'face front' }, ...(toEn ? czSide : enSide)),
+      el('span', { class: 'face rear' }, ...(toEn ? enSide : czSide), exSide));
+    const seg = el('div', { class: 'seg', role: 'group', 'aria-label': 'Card direction' },
+      el('button', { type: 'button', text: 'EN \u2192 CZ', 'aria-pressed': String(!toEn), onclick: () => { cardDir = 'en'; flipped = false; render(); } }),
+      el('button', { type: 'button', text: 'CZ \u2192 EN', 'aria-pressed': String(toEn), onclick: () => { cardDir = 'cz'; flipped = false; render(); } }));
     box.replaceChildren(
+      seg,
       el('div', { class: 'progress', 'aria-live': 'polite', text: 'Card ' + (i + 1) + ' of ' + deck.length }),
       el('div', { class: 'cardwrap' }, card),
-      el('p', { class: 'muted fliphint', style: 'margin-top:.8rem', text: 'Click the card or press space to see the meaning.' }),
+      el('p', { class: 'muted fliphint', style: 'margin-top:.8rem', text: toEn ? 'Click the card or press space to see the English word.' : 'Click the card or press space to see the meaning.' }),
       el('div', { class: 'cardbar', hidden: true },
         el('button', { class: 'btn bad', type: 'button', text: 'Still learning', onclick: () => answer(false) }),
         el('button', { class: 'btn good', type: 'button', text: 'I know it', onclick: () => answer(true) })));
@@ -509,40 +548,62 @@ function exercise(n, mode){
   function typeQ(w){
     let answered = false;
     const accepted = mode === 'gap' ? [norm(w.form)].concat((w.gapalt || []).map(norm)) : mode === 'listen' ? [norm(w.head)] : set.filter(x => x.cz === w.cz).map(x => norm(x.head)).concat((w.alt || []).map(norm));
-    const input = el('input', { type: 'text', autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false', 'aria-label': 'Your answer', placeholder: 'Type the English word' });
-    const hintBtn = el('button', { class: 'btn ghost small', type: 'button', text: 'Hint' });
-    const hintOut = el('div', { class: 'qhelp', 'aria-live': 'polite' });
     const target = mode === 'gap' ? w.form : w.head;
+    const nFirst = w.first ? +w.first : 0;
+    const ph = nFirst ? target.slice(0, nFirst).toLowerCase() + '…' : '';
+    const input = el('input', { type: 'text', class: 'tin ' + (mode === 'gap' ? 'in-gap' : 'in-line'), autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false', 'aria-label': mode === 'gap' ? 'Missing word' : 'Your answer', placeholder: ph });
+    if (mode === 'gap'){
+      const fit = () => { input.style.width = Math.max(8, input.value.length + 2) + 'ch'; };
+      fit(); input.addEventListener('input', fit);
+    }
+    const hintBtn = el('button', { class: 'linkbtn', type: 'button', text: 'Hint' });
+    const hintOut = el('span', { class: 'hintout', 'aria-live': 'polite' });
     hintBtn.addEventListener('click', () => { hintOut.textContent = 'Starts with "' + target[0].toLowerCase() + '", ' + target.replace(/\s/g, '').length + ' letters.'; input.focus(); });
     const checkBtn = el('button', { class: 'btn', type: 'submit', text: 'Check' });
-    const form = el('form', { class: 'typeform' }, input, checkBtn);
-    const fbSlot = el('div');
-    const q = el('div', { class: 'q' });
+    const actions = el('div', { class: 'tact' }, checkBtn, hintBtn, hintOut);
+    const cz = () => el('div', { class: 'czchip' }, el('span', { class: 'czw', text: w.cz }), el('small', { text: w.pos + (w.note ? ', ' + w.note : '') }), w.avoid ? el('small', { class: 'avoid', text: 'NOT "' + w.avoid + '"' }) : null);
+    const tense = w.tense ? el('span', { class: 'tense', text: ' (' + w.tense + ')' }) : null;
+    const form = el('form', { class: 'tform' });
+    const body = el('div', { class: 'tbody' });
     if (mode === 'gap'){
-      q.append(el('div', { class: 'qhelp', text: 'Type the missing word.' }), el('div', { class: 'qsent' }, sentenceWithBlank(w)),
-        el('div', { class: 'qcz' }, el('span', { class: 'lab', text: 'Czech: ' }), el('b', { text: w.cz }), el('span', { class: 'meta', text: ' (' + w.pos + (w.note ? ', ' + w.note : '') + ')' + (w.avoid ? ' - NOT "' + w.avoid + '"' : '') })));
+      let used = false;
+      const parts = pieces(w.sent, w.form).map(p => typeof p === 'string' ? p : (!used ? (used = true, input) : el('span', { class: 'blank', 'aria-label': 'blank' })));
+      body.append(cz(), el('div', { class: 'tsent' }, ...parts, tense));
     } else if (mode === 'spell'){
-      q.append(el('div', { class: 'qhelp', text: 'Write this in English.' }), el('div', { class: 'qprompt' }, w.cz, el('small', { text: w.pos + (w.note ? ', ' + w.note : '') })));
-      if (w.first) q.append(el('div', { class: 'qhelp', text: 'Starts with "' + w.head.slice(0, +w.first).toLowerCase() + '".' }));
-      if (w.avoid) q.append(el('div', { class: 'qhelp', text: 'NOT "' + w.avoid + '".' }));
+      body.append(cz(), el('div', { class: 'tline' }, input));
     } else {
-      const play = el('button', { class: 'btn', type: 'button', text: 'Play the word', onclick: () => speak(w.head) });
-      const slow = el('button', { class: 'btn ghost', type: 'button', text: 'Play slowly', onclick: () => speak(w.head, 0.55) });
-      q.append(el('div', { class: 'qhelp', text: 'Listen and type the word you hear.' }), el('div', { class: 'row', style: 'margin-top:.8rem' }, play, slow));
+      const play = el('button', { class: 'bigplay', type: 'button', 'aria-label': 'Play the word', title: 'Play the word', onclick: () => speak(w.head) });
+      play.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h4l5 4V6L7 10H3zm13.5 2a4.5 4.5 0 0 0-2.5-4.03v8.05A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23z"/></svg>';
+      const slow = el('button', { class: 'linkbtn', type: 'button', text: 'Play slowly', onclick: () => speak(w.head, 0.55) });
+      body.append(el('div', { class: 'ltop' }, play, slow), el('div', { class: 'tline' }, input));
       setTimeout(() => speak(w.head), 250);
     }
-    q.append(form, el('div', { class: 'row', style: 'margin-top:.6rem' }, hintBtn), hintOut, fbSlot);
+    form.append(body, actions);
+    const q = el('div', { class: 'q' }, form);
     form.addEventListener('submit', e => {
       e.preventDefault(); if (answered) return;
       const val = norm(input.value); if (!val){ input.focus(); return; }
       answered = true;
-      const ok = accepted.includes(val);
-      input.readOnly = true; checkBtn.disabled = true; hintBtn.disabled = true;
-      input.classList.add(ok ? 'right' : 'wrong');
-      finish(w, ok, input.value.trim());
-      const extra = ok ? answerRow(true, 'Your answer - correct', input.value.trim()) : el('div', null, answerRow(false, 'Your answer - wrong', input.value.trim()), answerRow(true, 'Correct answer', target));
-      fbSlot.replaceChildren(feedback(w, ok, extra));
-      fbSlot.querySelector('#next').focus();
+      const ok = accepted.includes(val), typed = input.value.trim();
+      finish(w, ok, typed);
+      const last = i === picked.length - 1;
+      const result = ok ? [el('span', { class: 'rok', text: typed })] : [el('span', { class: 'rno', text: typed }), el('span', { class: 'rok', text: target })];
+      const nextBtn = el('button', { class: 'btn', type: 'button', id: 'next', text: last ? 'See results' : 'Next →', onclick: () => { i++; render(); } });
+      const status = el('span', { class: 'rmsg ' + (ok ? 'good' : 'bad'), 'aria-live': 'polite', text: ok ? '✓ Correct' : '✗ Not quite' });
+      let main;
+      if (mode === 'gap'){
+        let used = false;
+        const parts = pieces(w.sent, w.form).map(p => typeof p === 'string' ? p : (!used ? (used = true, el('span', null, ...result)) : el('span', { class: 'rok', text: p.hit })));
+        main = el('div', { class: 'tsent' }, ...parts, ' ', speakBtn(w.sent, 'Listen to the sentence'));
+        body.replaceChildren(cz(), main);
+      } else if (mode === 'spell'){
+        body.replaceChildren(cz(), el('div', { class: 'tline' }, ...result, speakBtn(w.head, 'Listen: ' + w.head)), el('div', { class: 'tex' }, sentenceWithMark(w)));
+      } else {
+        body.replaceChildren(el('div', { class: 'tline' }, ...result), el('div', { class: 'tex' }, w.cz + ' (' + w.pos + ') · ', sentenceWithMark(w), ' ', speakBtn(w.sent, 'Listen to the sentence')));
+      }
+      actions.replaceChildren(status, nextBtn);
+      actions.classList.add('done');
+      nextBtn.focus();
     });
     setTimeout(() => { if (!answered && mode !== 'listen') input.focus({ preventScroll: true }); }, 0);
     return q;
