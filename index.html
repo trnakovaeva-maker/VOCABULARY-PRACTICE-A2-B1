@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vocabulary practice</title>
+<meta name="description" content="Practise the Oxford 3000 words at levels A2 and B1: Czech translations, example sentences, flashcards and exercises.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f4;--surface:#fff;--ink:#14202e;--muted:#566576;--line:#d3dae2;--accent:#0e5a6b;--accent-ink:#fff;--accent-soft:#d9ebef;--focus:#e08a00;
+  --font:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1620;--surface:#17222f;--ink:#e8eef4;--muted:#9aa9b8;--line:#2a3846;--accent:#5bc0d6;--accent-ink:#06222a;--accent-soft:#16323b;--focus:#ffb938}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.5}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+main{max-width:820px;margin:0 auto;padding:3rem 1rem 4rem}
+h1{margin:0;font-size:clamp(2rem,5vw,2.9rem);line-height:1.15;letter-spacing:-.02em}
+.lead{max-width:60ch;color:var(--muted);margin:.8rem 0 2rem;font-size:1.05rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+a.card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.4rem;text-decoration:none;color:var(--ink)}
+a.card:hover{border-color:var(--accent)}
+a.card.a2{--accent:#1d4ed8;--accent-ink:#fff;border-top:6px solid var(--accent)}
+a.card.b1{--accent:#1b7a3d;--accent-ink:#fff;border-top:6px solid var(--accent)}
+@media (prefers-color-scheme:dark){a.card.a2{--accent:#82b1ff;--accent-ink:#06142f}a.card.b1{--accent:#74d696;--accent-ink:#062412}}
+.lvl{font-size:2.6rem;font-weight:700;color:var(--accent);line-height:1}
+.card h2{color:var(--ink);margin:.5rem 0 .3rem;font-size:1.2rem}
+.card p{margin:0;color:var(--muted)}
+.go{display:inline-block;margin-top:1rem;background:var(--accent);color:var(--accent-ink);font-weight:700;border-radius:8px;padding:.5rem 1rem}
+</style>
+</head>
+<body>
+<main>
+  <h1>Vocabulary practice</h1>
+  <p class="lead">Words from the Oxford 3000 with Czech translations, example sentences, pronunciation, flashcards and exercises. Choose your level.</p>
+  <div class="cards">
+    <a class="card a2" href="a2/"><div class="lvl">A2</div><h2>Level A2</h2><p>870 words in 18 sets.</p><span class="go">Open A2</span></a>
+    <a class="card b1" href="b1/"><div class="lvl">B1</div><h2>Level B1</h2><p>810 words in 16 sets.</p><span class="go">Open B1</span></a>
+  </div>
+</main>
+</body>
+</html>
