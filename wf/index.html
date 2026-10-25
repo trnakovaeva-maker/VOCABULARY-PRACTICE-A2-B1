@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word formation practice</title>
+<meta name="description" content="Word formation practice for STANAG Level 2: complete the sentences with the correct form of the word in brackets. Ten sentences per set with feedback.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f1e8; --surface:#ffffff; --ink:#14202e; --muted:#566576; --line:#ddd3c3;
+  --accent:#b45309; --accent-ink:#ffffff; --accent-soft:#fbe8d0;
+  --good:#1d7a3c; --good-soft:#dff1e4; --bad:#b3342b; --bad-soft:#f9e1de; --focus:#1d4ed8;
+  --radius:10px;
+  --font:'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#1a140c; --surface:#251d12; --ink:#eee8de; --muted:#b0a591; --line:#43371f;
+    --accent:#fbbf24; --accent-ink:#2a1a02; --accent-soft:#40300f;
+    --good:#6ccb8a; --good-soft:#143323; --bad:#f28b82; --bad-soft:#3a1a18; --focus:#82b1ff;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{border-top:6px solid var(--accent);margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.5}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+h1,h2,h3{line-height:1.15;margin:0}
+h1:focus{outline:none}
+h1{font-size:clamp(2rem,5vw,2.9rem);font-weight:700;letter-spacing:-.02em}
+h2{font-size:1.3rem;font-weight:700}
+p{margin:0}
+.wrap{max-width:860px;margin:0 auto;padding:1.5rem 1rem 4rem}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;max-width:860px;margin:0 auto}
+header.top a.brand{font-weight:700;text-decoration:none;color:var(--accent);font-size:1.05rem}
+header.top .sub{color:var(--muted);font-size:.92rem}
+.lead{max-width:62ch;color:var(--muted);margin-top:.8rem;font-size:1.05rem}
+.muted{color:var(--muted)}
+.back{display:inline-block;margin-bottom:1rem;text-decoration:none;font-weight:700}
+.back:hover{text-decoration:underline}
+.btn{font:inherit;font-weight:700;cursor:pointer;border-radius:var(--radius);padding:.65rem 1.1rem;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);text-decoration:none;display:inline-block;line-height:1.2}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.ghost:hover{background:var(--accent-soft);filter:none}
+.row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+
+.sets{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:.7rem}
+.sets a{display:flex;gap:1rem;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:var(--radius);padding:.9rem 1rem;text-decoration:none;color:var(--ink)}
+.sets a:hover{border-color:var(--accent)}
+.sets .n{font-size:1.8rem;font-weight:700;color:var(--accent);min-width:2rem;text-align:center}
+.sets .t{font-weight:700}
+.sets .d{color:var(--muted);font-size:.95rem}
+.sets .best{margin-left:auto;font-weight:700;color:var(--muted);white-space:nowrap}
+.sets .best.full{color:var(--good)}
+
+.ex{list-style:none;padding:0;margin:1.4rem 0 0;display:grid;gap:.6rem}
+.item{display:grid;grid-template-columns:2rem 1fr;gap:.6rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:.8rem 1rem}
+.item .no{font-weight:700;color:var(--accent)}
+.item .sent{font-size:1.2rem;line-height:2}
+.item .base{display:inline-block;margin-left:.4rem;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:8px;padding:0 .5rem;white-space:nowrap}
+.czbtn{font:inherit;font-size:.72rem;font-weight:700;cursor:pointer;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:6px;padding:.05rem .4rem;margin-left:.4rem;vertical-align:middle;line-height:1.4}
+.czbtn:hover{border-color:var(--accent);color:var(--accent)}
+.czbtn[aria-pressed=true]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.spk{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--accent);width:2rem;height:2rem;border-radius:50%;display:inline-grid;place-items:center;padding:0;margin-left:.4rem;vertical-align:middle}
+.spk:hover{background:var(--accent-soft)}
+.spk svg{width:1rem;height:1rem;fill:currentColor}
+.czline{color:var(--muted);font-style:italic;font-size:1.02rem;margin-top:.1rem}
+.tools{display:flex;gap:.6rem;align-items:center;margin-top:1rem}
+.tin{font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:3px solid var(--accent);border-radius:0;padding:0 .3em;text-align:center;outline:none;width:11ch;max-width:100%}
+.tin:focus{background:var(--accent-soft)}
+.tin:disabled{opacity:1}
+.item.ok{border-color:var(--good);background:var(--good-soft)}
+.item.bad{border-color:var(--bad);background:var(--bad-soft)}
+.item.ok .no{color:var(--good)}.item.bad .no{color:var(--bad)}
+.rok{color:var(--good);font-weight:700;border-bottom:3px solid var(--good);padding:0 .3em}
+.rno{color:var(--bad);text-decoration:line-through;text-decoration-thickness:2px;padding:0 .3em;margin-right:.3em}
+.why{margin-top:.3rem;font-size:.98rem;color:var(--muted)}
+.why b{color:var(--ink)}
+.msg{font-weight:700}
+.msg.bad{color:var(--bad)}
+
+.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem;align-items:center}
+.result{margin-top:1.6rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem 1.2rem 1.4rem}
+.score{font-size:clamp(2.4rem,8vw,3.4rem);font-weight:700;letter-spacing:-.02em;line-height:1}
+.score small{font-size:1.1rem;color:var(--muted);font-weight:400;letter-spacing:0}
+.verdict{margin-top:.5rem;font-size:1.1rem}
+.sw{position:absolute;left:-9999px}
+footer{max-width:860px;margin:0 auto;padding:0 1rem 3rem;color:var(--muted);font-size:.88rem}
+footer p{max-width:70ch;margin-bottom:.5rem}
+footer button{font:inherit;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#/">Word formation</a>
+  <span class="sub">STANAG Level 2 · <a href="../">All practice</a></span>
+</header>
+<main id="app" class="wrap"></main>
+<footer>
+  <p>Sentences written for STANAG Level 2 speaking and writing practice. The words in brackets are mostly taken from the Oxford 3000™ (© Oxford University Press) and chosen for their usefulness. The Czech translations are provided as help for the students.</p>
+  <p>Your best scores are saved in this browser only. <button type="button" id="reset">Reset my scores</button></p>
+</footer>
+<script>
+const SETS = [{"id":1,"title":"Verbs → nouns: -tion, -ation, -sion","desc":"reserve → reservation, discuss → discussion","items":[{"s":"I'd like to make a ___ for two people on Friday.","base":"reserve","ans":["reservation"],"type":"verb → noun (-ation)","cz":"Chtěl/a bych si udělat rezervaci pro dvě osoby na pátek."},{"s":"Could you give me a ___ for a good hotel in Prague?","base":"recommend","ans":["recommendation"],"type":"verb → noun (-ation)","cz":"Mohl/a byste mi doporučit dobrý hotel v Praze?"},{"s":"After a long ___ with my family, we decided to move to Brno.","base":"discuss","ans":["discussion"],"type":"verb → noun (-ion)","cz":"Po dlouhé diskusi s rodinou jsme se rozhodli přestěhovat se do Brna."},{"s":"It was a difficult ___ to change my job.","base":"decide","ans":["decision"],"type":"verb → noun (-ion, d → s)","cz":"Bylo těžké rozhodnutí změnit práci."},{"s":"I'm writing to ask for more ___ about your language courses.","base":"inform","ans":["information"],"type":"verb → noun (-ation)","cz":"Píšu, abych se zeptal/a na více informací o vašich jazykových kurzech."},{"s":"A good ___ is very important for young people.","base":"educate","ans":["education"],"type":"verb → noun (-ation)","cz":"Dobré vzdělání je pro mladé lidi velmi důležité."},{"s":"We heard a loud ___ near the station.","base":"explode","ans":["explosion"],"type":"verb → noun (-sion)","cz":"Slyšeli jsme hlasitý výbuch poblíž nádraží."},{"s":"The ___ of the new road will take two years.","base":"construct","ans":["construction"],"type":"verb → noun (-ion)","cz":"Stavba nové silnice bude trvat dva roky."},{"s":"Thank you for your ___ to the party; I'd love to come.","base":"invite","ans":["invitation"],"type":"verb → noun (-ation)","cz":"Děkuji za pozvání na večírek; moc rád/a přijdu."},{"s":"Please send your ___ by the end of the month.","base":"apply","ans":["application"],"type":"verb → noun (-y → -ication)","cz":"Pošlete prosím svou přihlášku do konce měsíce."}]},{"id":2,"title":"Verbs → nouns: -ment, -ance, -al, -ution","desc":"arrange → arrangement, perform → performance","items":[{"s":"We have an ___ to meet the manager at ten o'clock.","base":"arrange","ans":["arrangement"],"type":"verb → noun (-ment)","cz":"Máme domluvenou schůzku s vedoucím v deset hodin."},{"s":"There has been a big ___ in my English this year.","base":"improve","ans":["improvement"],"type":"verb → noun (-ment)","cz":"V mé angličtině došlo letos k velkému zlepšení."},{"s":"The ___ of the old equipment will start on Monday.","base":"replace","ans":["replacement"],"type":"verb → noun (-ment)","cz":"Výměna starého vybavení začne v pondělí."},{"s":"The ___ at the training course was very high.","base":"attend","ans":["attendance"],"type":"verb → noun (-ance)","cz":"Účast na školicím kurzu byla velmi vysoká."},{"s":"Her ___ to my question was very short.","base":"respond","ans":["response"],"type":"verb → noun (-se)","cz":"Její odpověď na mou otázku byla velmi krátká."},{"s":"After two hours, the two sides reached an ___.","base":"agree","ans":["agreement"],"type":"verb → noun (-ment)","cz":"Po dvou hodinách obě strany dosáhly dohody."},{"s":"The ___ of the orchestra last night was excellent.","base":"perform","ans":["performance"],"type":"verb → noun (-ance)","cz":"Včerejší vystoupení orchestru bylo výborné."},{"s":"The ___ of the soldiers in the mountains was a miracle.","base":"survive","ans":["survival"],"type":"verb → noun (-al)","cz":"Přežití vojáků v horách byl zázrak."},{"s":"We need a quick ___ to this problem.","base":"solve","ans":["solution"],"type":"verb → noun (solve → solution)","cz":"Potřebujeme rychlé řešení tohoto problému."},{"s":"Thank you for your ___ during my stay.","base":"assist","ans":["assistance"],"type":"verb → noun (-ance)","cz":"Děkuji za vaši pomoc během mého pobytu."}]},{"id":3,"title":"Adjectives → adverbs","desc":"slow → slowly, good → well","items":[{"s":"Please drive ___ in the city centre.","base":"careful","ans":["carefully"],"type":"adjective → adverb (-ly)","cz":"Jezděte prosím opatrně v centru města."},{"s":"He speaks English very ___.","base":"good","ans":["well"],"type":"adjective → adverb (irregular: good → well)","cz":"Mluví anglicky velmi dobře."},{"s":"The bus ___ arrives on time.","base":"usual","ans":["usually"],"type":"adjective → adverb (-ly)","cz":"Autobus obvykle přijíždí na čas."},{"s":"We walked ___ because the road was icy.","base":"slow","ans":["slowly"],"type":"adjective → adverb (-ly)","cz":"Šli jsme pomalu, protože byla silnice namrzlá."},{"s":"The fire brigade arrived very ___.","base":"quick","ans":["quickly"],"type":"adjective → adverb (-ly)","cz":"Hasiči přijeli velmi rychle."},{"s":"The weather changed ___ in the afternoon.","base":"sudden","ans":["suddenly"],"type":"adjective → adverb (-ly)","cz":"Počasí se odpoledne náhle změnilo."},{"s":"___, nobody was hurt in the accident.","base":"lucky","ans":["luckily"],"type":"adjective → adverb (-y → -ily)","cz":"Naštěstí nebyl při nehodě nikdo zraněn."},{"s":"The children behaved ___ at the museum.","base":"polite","ans":["politely"],"type":"adjective → adverb (-ly)","cz":"Děti se v muzeu chovaly slušně."},{"s":"You can ___ find the office near the station.","base":"easy","ans":["easily"],"type":"adjective → adverb (-y → -ily)","cz":"Kancelář snadno najdete poblíž nádraží."},{"s":"She waited ___ for the doctor.","base":"patient","ans":["patiently"],"type":"adjective → adverb (-ly)","cz":"Trpělivě čekala na lékaře."}]},{"id":4,"title":"Word families with bigger changes","desc":"fly → flight, strong → strength","items":[{"s":"Our ___ to London was delayed by two hours.","base":"fly","ans":["flight"],"type":"verb → noun (fly → flight)","cz":"Náš let do Londýna měl dvě hodiny zpoždění."},{"s":"It was a very difficult ___.","base":"choose","ans":["choice"],"type":"verb → noun (choose → choice)","cz":"Byla to velmi těžká volba."},{"s":"The ___ of the new company surprised everyone.","base":"succeed","ans":["success"],"type":"verb → noun (succeed → success)","cz":"Úspěch nové firmy všechny překvapil."},{"s":"The ___ of the old king was a sad day for the nation.","base":"die","ans":["death"],"type":"verb → noun (die → death)","cz":"Smrt starého krále byla pro národ smutným dnem."},{"s":"Online ___ have increased by ten per cent.","base":"sell","ans":["sales"],"type":"verb → noun (sell → sales)","cz":"Online prodeje vzrostly o deset procent."},{"s":"What is the ___ of the runway?","base":"long","ans":["length"],"type":"adjective → noun (long → length)","cz":"Jaká je délka přistávací dráhy?"},{"s":"Physical ___ is important for soldiers.","base":"strong","ans":["strength"],"type":"adjective → noun (strong → strength)","cz":"Fyzická síla je pro vojáky důležitá."},{"s":"What is the ___ of the tower?","base":"high","ans":["height"],"type":"adjective → noun (high → height)","cz":"Jaká je výška věže?"},{"s":"Do you have any ___ of your identity?","base":"prove","ans":["proof"],"type":"verb → noun (prove → proof)","cz":"Máte nějaký doklad své totožnosti?"},{"s":"The ___ of the plan was a big disappointment.","base":"fail","ans":["failure"],"type":"verb → noun (-ure)","cz":"Neúspěch plánu byl velkým zklamáním."}]},{"id":5,"title":"People and jobs: -er, -or, -ist, -ant, -ian","desc":"manage → manager, music → musician","items":[{"s":"Every ___ must show a passport at the border.","base":"travel","ans":["traveller","traveler"],"type":"verb → person (-er)","cz":"Každý cestující musí na hranici předložit pas."},{"s":"My ___ asked me to write a report.","base":"manage","ans":["manager"],"type":"verb → person (-er)","cz":"Můj vedoucí mě požádal, abych napsal/a zprávu."},{"s":"The ___ of the competition received a gold medal.","base":"win","ans":["winner"],"type":"verb → person (-er, nn)","cz":"Vítěz soutěže získal zlatou medaili."},{"s":"Our company has more than 200 ___.","base":"employ","ans":["employees"],"type":"verb → person (-ee, plural)","cz":"Naše firma má více než 200 zaměstnanců."},{"s":"Thousands of ___ come to the castle every year.","base":"visit","ans":["visitors"],"type":"verb → person (-or, plural)","cz":"Na hrad každý rok přijedou tisíce návštěvníků."},{"s":"Each ___ has to pass a language test.","base":"apply","ans":["applicant"],"type":"verb → person (-ant)","cz":"Každý uchazeč musí složit jazykový test."},{"s":"Our biggest ___ is a German company.","base":"compete","ans":["competitor"],"type":"verb → person (-itor)","cz":"Náš největší konkurent je německá firma."},{"s":"The ___ painted this picture in 1990.","base":"art","ans":["artist"],"type":"noun → person (-ist)","cz":"Umělec namaloval tento obraz v roce 1990."},{"s":"My sister is a ___; she plays the violin.","base":"music","ans":["musician"],"type":"noun → person (-ian)","cz":"Moje sestra je hudebnice; hraje na housle."},{"s":"The ___ made a speech about the new law.","base":"politics","ans":["politician"],"type":"noun → person (-ian)","cz":"Politik pronesl projev o novém zákonu."}]},{"id":6,"title":"Adjectives from nouns and verbs: -ful, -ous, -y, -al, -ive","desc":"danger → dangerous, help → helpful","items":[{"s":"It is ___ to drive without a seatbelt.","base":"danger","ans":["dangerous"],"type":"noun → adjective (-ous)","cz":"Je nebezpečné řídit bez bezpečnostního pásu."},{"s":"Thank you, that was very ___.","base":"help","ans":["helpful"],"type":"noun → adjective (-ful)","cz":"Děkuji, to mi velmi pomohlo."},{"s":"It was a ___ day, so we stayed at home.","base":"rain","ans":["rainy"],"type":"noun → adjective (-y)","cz":"Byl deštivý den, tak jsme zůstali doma."},{"s":"This map is very ___ for tourists.","base":"use","ans":["useful"],"type":"noun → adjective (-ful)","cz":"Tato mapa je pro turisty velmi užitečná."},{"s":"She is a very ___ young officer.","base":"success","ans":["successful"],"type":"noun → adjective (-ful)","cz":"Je to velmi úspěšná mladá důstojnice."},{"s":"It was a ___ morning, and we couldn't see the sun.","base":"cloud","ans":["cloudy"],"type":"noun → adjective (-y)","cz":"Bylo zamračené ráno a slunce nebylo vidět."},{"s":"That actor is ___ all over the world.","base":"fame","ans":["famous"],"type":"noun → adjective (-ous)","cz":"Ten herec je známý po celém světě."},{"s":"The ___ team won the European championship.","base":"nation","ans":["national"],"type":"noun → adjective (-al)","cz":"Národní tým vyhrál mistrovství Evropy."},{"s":"We should do more to solve ___ problems.","base":"environment","ans":["environmental"],"type":"noun → adjective (-al)","cz":"Měli bychom dělat víc pro řešení ekologických problémů."},{"s":"Our grandmother is still very ___ for her age.","base":"act","ans":["active"],"type":"verb → adjective (-ive)","cz":"Naše babička je na svůj věk pořád velmi aktivní."}]},{"id":7,"title":"Negative prefixes: un-, in-, im-, dis-, il-","desc":"possible → impossible, honest → dishonest","items":[{"s":"It's ___ to park here; the road is too narrow.","base":"possible","ans":["impossible"],"type":"prefix im-","cz":"Tady se nedá parkovat; silnice je příliš úzká."},{"s":"I was very ___ with the test result.","base":"happy","ans":["unhappy"],"type":"prefix un-","cz":"S výsledkem testu jsem byl/a velmi nespokojený/á."},{"s":"The instructions were ___, so I asked for help.","base":"clear","ans":["unclear"],"type":"prefix un-","cz":"Pokyny byly nejasné, tak jsem požádal/a o pomoc."},{"s":"I can't trust him; he is very ___.","base":"reliable","ans":["unreliable"],"type":"prefix un-","cz":"Nemohu mu věřit; je velmi nespolehlivý."},{"s":"Sorry, but I ___ with you on this point.","base":"agree","ans":["disagree"],"type":"prefix dis-","cz":"Promiňte, ale v tomto bodě s vámi nesouhlasím."},{"s":"It is ___ to carry weapons in this area.","base":"legal","ans":["illegal"],"type":"prefix il-","cz":"V této oblasti je nošení zbraní nezákonné."},{"s":"The seats on the bus were very ___.","base":"comfortable","ans":["uncomfortable"],"type":"prefix un-","cz":"Sedadla v autobuse byla velmi nepohodlná."},{"s":"It is very ___ to interrupt people when they speak.","base":"polite","ans":["impolite"],"type":"prefix im-","cz":"Je velmi neslušné skákat lidem do řeči."},{"s":"The man was ___ and told the police a lie.","base":"honest","ans":["dishonest"],"type":"prefix dis-","cz":"Ten muž byl nečestný a řekl policii lež."},{"s":"He was ___ to attend the meeting because he was ill.","base":"able","ans":["unable"],"type":"prefix un-","cz":"Nemohl se zúčastnit schůzky, protože byl nemocný."}]},{"id":8,"title":"Mixed review: health, environment, work","desc":"all the types together","items":[{"s":"Doctors say regular exercise has a positive ___ on your health.","base":"affect","ans":["effect"],"type":"verb → noun (affect → effect)","cz":"Lékaři říkají, že pravidelné cvičení má pozitivní vliv na vaše zdraví."},{"s":"Many people are worried about air ___ in big cities.","base":"pollute","ans":["pollution"],"type":"verb → noun (-ion)","cz":"Mnoho lidí se obává znečištění ovzduší ve velkých městech."},{"s":"The old castle is a major tourist ___.","base":"attract","ans":["attraction"],"type":"verb → noun (-ion)","cz":"Starý hrad je velkou turistickou atrakcí."},{"s":"The ___ of electricity rises in winter.","base":"consume","ans":["consumption"],"type":"verb → noun (consume → consumption)","cz":"Spotřeba elektřiny v zimě roste."},{"s":"Soldiers wear helmets for ___.","base":"protect","ans":["protection"],"type":"verb → noun (-ion)","cz":"Vojáci nosí přilby na ochranu."},{"s":"___ is our first priority on the road.","base":"safe","ans":["safety"],"type":"adjective → noun (-ty)","cz":"Bezpečnost je na silnici naší první prioritou."},{"s":"I'd like an ___ of the rules, please.","base":"explain","ans":["explanation"],"type":"verb → noun (explain → explanation)","cz":"Chtěl/a bych vysvětlení pravidel, prosím."},{"s":"The ___ must be made by credit card.","base":"pay","ans":["payment"],"type":"verb → noun (-ment)","cz":"Platba musí být provedena kreditní kartou."},{"s":"She won first prize in the ___.","base":"compete","ans":["competition"],"type":"verb → noun (-ition)","cz":"V soutěži vyhrála první cenu."},{"s":"He explained the rules very ___.","base":"clear","ans":["clearly"],"type":"adjective → adverb (-ly)","cz":"Pravidla vysvětlil velmi jasně."}]},{"id":9,"title":"Mixed review 2: work and study","desc":"employ → employment, know → knowledge","items":[{"s":"The company offers good ___ for young graduates.","base":"employ","ans":["employment"],"type":"verb → noun (-ment)","cz":"Firma nabízí mladým absolventům dobré zaměstnání."},{"s":"The lecture was very ___, and I learnt a lot.","base":"inform","ans":["informative"],"type":"verb → adjective (-ative)","cz":"Přednáška byla velmi poučná a hodně jsem se naučil/a."},{"s":"The government must take ___ to protect the environment.","base":"act","ans":["action"],"type":"verb → noun (-ion)","cz":"Vláda musí podniknout kroky na ochranu životního prostředí."},{"s":"The ___ of the conference welcomed all the guests.","base":"organise","ans":["organiser","organizer"],"type":"verb → person (-er)","cz":"Organizátor konference přivítal všechny hosty."},{"s":"We talked about the ___ of building a new hospital.","base":"possible","ans":["possibility"],"type":"adjective → noun (-ility)","cz":"Mluvili jsme o možnosti postavit novou nemocnici."},{"s":"She spoke ___ in front of the whole class.","base":"confident","ans":["confidently"],"type":"adjective → adverb (-ly)","cz":"Mluvila sebevědomě před celou třídou."},{"s":"___ is the best policy.","base":"honest","ans":["honesty"],"type":"adjective → noun (-y)","cz":"Upřímnost je nejlepší politika."},{"s":"He has a lot of ___ about computers.","base":"know","ans":["knowledge"],"type":"verb → noun (know → knowledge)","cz":"Má velké znalosti o počítačích."},{"s":"My sister wants to become a primary school ___.","base":"teach","ans":["teacher"],"type":"verb → person (-er)","cz":"Moje sestra chce být učitelkou na základní škole."},{"s":"I always feel ___ after a long flight.","base":"tire","ans":["tired"],"type":"verb → adjective (-ed)","cz":"Po dlouhém letu se vždycky cítím unavený/á."}]},{"id":10,"title":"Mixed review 3: travel and free time","desc":"enjoy → enjoyable, bore → boring","items":[{"s":"The ___ to the museum is free on Sundays.","base":"enter","ans":["entrance","entry"],"type":"verb → noun (-ance)","cz":"Vstup do muzea je v neděli zdarma."},{"s":"We had a very ___ trip to the mountains.","base":"enjoy","ans":["enjoyable"],"type":"verb → adjective (-able)","cz":"Měli jsme velmi příjemný výlet do hor."},{"s":"___ at the airport is very strict.","base":"secure","ans":["security"],"type":"adjective → noun (-ity)","cz":"Bezpečnostní kontrola na letišti je velmi přísná."},{"s":"The plane landed ___ despite the storm.","base":"safe","ans":["safely"],"type":"adjective → adverb (-ly)","cz":"Letadlo přistálo i přes bouři bezpečně."},{"s":"She is a very ___ traveller; she has visited fifty countries.","base":"experience","ans":["experienced"],"type":"noun → adjective (-ed)","cz":"Je to velmi zkušená cestovatelka; navštívila padesát zemí."},{"s":"We were very ___ when the flight was cancelled.","base":"disappoint","ans":["disappointed"],"type":"verb → adjective (-ed)","cz":"Byli jsme velmi zklamaní, když byl let zrušen."},{"s":"Tourism is very important for the ___ development of the region.","base":"economy","ans":["economic"],"type":"noun → adjective (-ic)","cz":"Cestovní ruch je pro hospodářský rozvoj regionu velmi důležitý."},{"s":"My brother is a keen football ___.","base":"play","ans":["player"],"type":"verb → person (-er)","cz":"Můj bratr je vášnivý fotbalista."},{"s":"We had a ___ holiday by the sea.","base":"relax","ans":["relaxing"],"type":"verb → adjective (-ing)","cz":"Měli jsme odpočinkovou dovolenou u moře."},{"s":"The film was so ___ that I fell asleep.","base":"bore","ans":["boring"],"type":"verb → adjective (-ing)","cz":"Film byl tak nudný, že jsem usnul/a."}]},{"id":11,"title":"Mixed review 4: society and environment","desc":"destroy → destruction, poor → poverty","items":[{"s":"The ___ of the forest is a serious problem.","base":"destroy","ans":["destruction"],"type":"verb → noun (destroy → destruction)","cz":"Ničení lesa je vážný problém."},{"s":"Hundreds of people took part in the ___ in front of the parliament.","base":"demonstrate","ans":["demonstration"],"type":"verb → noun (-ation)","cz":"Stovky lidí se zúčastnily demonstrace před parlamentem."},{"s":"What is the ___ between these two words?","base":"differ","ans":["difference"],"type":"verb → noun (-ence)","cz":"Jaký je rozdíl mezi těmito dvěma slovy?"},{"s":"She has a strong ___ in the future of her country.","base":"believe","ans":["belief"],"type":"verb → noun (believe → belief)","cz":"Silně věří v budoucnost své země."},{"s":"The ___ of recycling is clear to everyone.","base":"important","ans":["importance"],"type":"adjective → noun (-ance)","cz":"Význam recyklace je každému jasný."},{"s":"He was ___ injured in the accident.","base":"serious","ans":["seriously"],"type":"adjective → adverb (-ly)","cz":"Při nehodě byl vážně zraněn."},{"s":"Scientists are ___ about the future of the planet.","base":"worry","ans":["worried"],"type":"verb → adjective (-y → -ied)","cz":"Vědci se obávají o budoucnost planety."},{"s":"Living in the city centre is very ___.","base":"expense","ans":["expensive"],"type":"noun → adjective (-ive)","cz":"Bydlení v centru města je velmi drahé."},{"s":"Many families in this area live in ___.","base":"poor","ans":["poverty"],"type":"adjective → noun (poor → poverty)","cz":"Mnoho rodin v této oblasti žije v chudobě."},{"s":"I'm sure he is telling the ___.","base":"true","ans":["truth"],"type":"adjective → noun (true → truth)","cz":"Jsem si jistý/á, že říká pravdu."}]}];
+const KEY = 'wf.v1';
+let store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
+const app = document.getElementById('app');
+function el(tag, attrs, ...kids){
+  const n = document.createElement(tag);
+  for (const k in (attrs || {})) {
+    const v = attrs[k];
+    if (v == null || v === false) continue;
+    if (k === 'class') n.className = v; else if (k === 'text') n.textContent = v;
+    else if (k.startsWith('on')) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v === true ? '' : v);
+  }
+  kids.flat().forEach(c => { if (c == null || c === false) return; n.append(c.nodeType ? c : document.createTextNode(c)); });
+  return n;
+}
+const norm = s => String(s).toLowerCase().replace(/[.,!?;:]+$/g, '').replace(/\s+/g, ' ').trim();
+function lev(a, b){
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i].concat(Array(b.length).fill(0)));
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++)
+    d[i][j] = Math.min(d[i-1][j] + 1, d[i][j-1] + 1, d[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+  return d[a.length][b.length];
+}
+function judge(it, typed){
+  const t = norm(typed);
+  if (!t) return { ok: false, msg: 'No answer.' };
+  if (it.ans.map(norm).includes(t)) return { ok: true };
+  if (t === norm(it.base)) return { ok: false, msg: 'The word has to change – you wrote the word from the brackets.' };
+  if (it.ans.some(a => lev(t, norm(a)) <= 2)) return { ok: false, msg: 'Almost! Check the spelling.' };
+  return { ok: false, msg: '' };
+}
+function sentenceNodes(it, input){
+  const [a, b] = it.s.split('___');
+  return [a, input, b];
+}
+
+function home(){
+  document.title = 'Word formation practice';
+  const list = el('ol', { class: 'sets' });
+  SETS.forEach(s => {
+    const best = store[s.id];
+    list.append(el('li', null, el('a', { href: '#/set/' + s.id },
+      el('span', { class: 'n', text: s.id }),
+      el('span', null, el('span', { class: 't', text: s.title }), el('br'), el('span', { class: 'd', text: s.desc })),
+      el('span', { class: 'best' + (best === 10 ? ' full' : ''), text: best == null ? '10 sentences' : 'best ' + best + '/10' }))));
+  });
+  app.replaceChildren(
+    el('h1', { text: 'Word formation', tabindex: '-1' }),
+    el('p', { class: 'lead', text: 'Complete each sentence with the correct form of the word in brackets. The word always has to change. After ten sentences you get your score and feedback on every answer.' }),
+    list);
+  app.querySelector('h1').focus({ preventScroll: true });
+}
+
+const AUDIO = (window.WFAUDIO = window.WFAUDIO || {});
+const audioLoading = {};
+function loadAudio(n){
+  if (AUDIO[n]) return Promise.resolve(true);
+  if (!audioLoading[n]) audioLoading[n] = new Promise(res => {
+    const s = document.createElement('script'); s.src = 'audio/set' + String(n).padStart(2, '0') + '.js';
+    s.onload = () => res(!!AUDIO[n]); s.onerror = () => res(false); document.head.append(s);
+  }).then(ok => { if (!ok) delete audioLoading[n]; return ok; });
+  return audioLoading[n];
+}
+let player = null;
+function playSentence(n, k){
+  loadAudio(n).then(ok => {
+    const b64 = ok && AUDIO[n][k]; if (!b64) return;
+    try { if (player) player.pause(); } catch (e) {}
+    player = new Audio('data:audio/mpeg;base64,' + b64); player.play().catch(() => {});
+  });
+}
+function spkBtn(n, k){
+  const b = el('button', { class: 'spk', type: 'button', title: 'Listen to the sentence', 'aria-label': 'Listen to the sentence' });
+  b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h4l5 4V6L7 10H3zm13.5 2a4.5 4.5 0 0 0-2.5-4.03v8.05A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23z"/></svg>';
+  b.addEventListener('click', e => { e.stopPropagation(); playSentence(n, k); });
+  return b;
+}
+function setCz(r, on){ r.czLine.hidden = !on; r.czBtn.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+function setView(id){
+  const set = SETS.find(s => s.id === id);
+  if (!set) return home();
+  loadAudio(id);
+  document.title = 'Set ' + id + ' · Word formation';
+  const rows = set.items.map((it, i) => {
+    const input = el('input', { class: 'tin', type: 'text', autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false', 'aria-label': 'Answer for sentence ' + (i + 1) });
+    const czBtn = el('button', { class: 'czbtn', type: 'button', 'aria-pressed': 'false', title: 'Show / hide the Czech translation', text: 'CZ' });
+    const czLine = el('div', { class: 'czline', text: it.cz || '' }); czLine.hidden = true; czLine.style.gridColumn = '2';
+    const sent = el('div', { class: 'sent' }, sentenceNodes(it, input),
+      el('span', { class: 'base', text: '(' + it.base + ')' }), czBtn);
+    const box = el('li', { class: 'item' }, el('span', { class: 'no', text: i + 1 }), sent, czLine);
+    const r = { it, input, box, sent, czBtn, czLine, spk: spkBtn(set.id, i + 1), done: false };
+    czBtn.addEventListener('click', () => setCz(r, czLine.hidden));
+    return r;
+  });
+  const resultBox = el('div', { 'aria-live': 'polite' });
+  let czAll = false; try { czAll = localStorage.getItem('wf.cz') === '1'; } catch (e) {}
+  const czToggle = el('button', { class: 'btn ghost small', type: 'button', 'aria-pressed': czAll ? 'true' : 'false', text: 'Czech translations' });
+  const applyCz = on => { rows.forEach(r => setCz(r, on)); czToggle.setAttribute('aria-pressed', on ? 'true' : 'false'); czToggle.textContent = on ? 'Hide Czech translations' : 'Show Czech translations'; try { localStorage.setItem('wf.cz', on ? '1' : '0'); } catch (e) {} };
+  czToggle.addEventListener('click', () => applyCz(czToggle.getAttribute('aria-pressed') !== 'true'));
+  const checkBtn = el('button', { class: 'btn', type: 'button', text: 'Check my answers' });
+  const actions = el('div', { class: 'actions' }, checkBtn);
+
+  rows.forEach((r, i) => r.input.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    const nxt = rows.slice(i + 1).find(x => !x.input.disabled);
+    if (nxt) nxt.input.focus(); else checkBtn.click();
+  }));
+
+  function showRow(r, res){
+    r.box.classList.remove('ok', 'bad'); r.box.classList.add(res.ok ? 'ok' : 'bad');
+    r.box.querySelectorAll('.why').forEach(n => n.remove());
+    const typed = r.input.value.trim();
+    const [a, b] = r.it.s.split('___');
+    const mid = res.ok ? [el('span', { class: 'rok', text: r.it.ans[0] })]
+      : [typed ? el('span', { class: 'rno', text: typed }) : null, el('span', { class: 'rok', text: r.it.ans[0] })];
+    r.sent.replaceChildren(...[a, ...mid, b, el('span', { class: 'base', text: '(' + r.it.base + ')' }), r.spk, r.czBtn].filter(Boolean));
+    const why = el('div', { class: 'why' });
+    if (!res.ok && res.msg) why.append(el('span', { class: 'msg bad', text: res.msg + ' ' }));
+    why.append(el('b', { text: r.it.base + ' → ' + r.it.ans[0] }), ' (' + r.it.type + ')');
+    r.box.append(why); r.box.lastChild.style.gridColumn = '2';
+  }
+
+  function check(){
+    const todo = rows.filter(r => !r.done);
+    todo.forEach(r => {
+      const res = judge(r.it, r.input.value);
+      r.res = res; r.done = true; r.input.disabled = true; showRow(r, res);
+    });
+    rows.forEach(r => setCz(r, true));
+    const score = rows.filter(r => r.res && r.res.ok).length;
+    const first = !resultBox.dataset.scored;
+    if (first) { resultBox.dataset.scored = '1'; if (store[id] == null || score > store[id]) { store[id] = score; save(); } }
+    const wrong = rows.filter(r => !r.res.ok);
+    const verdict = score === 10 ? 'Perfect! Every word is correct.' : score >= 8 ? 'Very good. Check the few mistakes below.' : score >= 5 ? 'Good start. Look at the rules next to each mistake and try again.' : 'Read the corrections carefully, then try the set again.';
+    resultBox.replaceChildren(el('div', { class: 'result' },
+      el('div', { class: 'score' }, score + '', el('small', { text: ' / 10' })),
+      el('p', { class: 'verdict', text: verdict }),
+      wrong.length ? el('p', { class: 'muted', text: 'Each answer is shown above in its sentence, with the change that was needed.' }) : null));
+    checkBtn.hidden = true;
+    actions.replaceChildren(...[
+      wrong.length ? el('button', { class: 'btn', type: 'button', text: 'Try the ' + wrong.length + ' wrong ' + (wrong.length === 1 ? 'one' : 'ones') + ' again', onclick: retry }) : null,
+      el('button', { class: 'btn ' + (wrong.length ? 'ghost' : ''), type: 'button', text: 'Start this set again', onclick: () => setView(id) }),
+      SETS[SETS.findIndex(x => x.id === id) + 1] ? el('a', { class: 'btn ghost', href: '#/set/' + SETS[SETS.findIndex(x => x.id === id) + 1].id, text: 'Next set' }) : null,
+      el('a', { class: 'btn ghost', href: '#/', text: 'All sets' })].filter(Boolean));
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function retry(){
+    const wrong = rows.filter(r => !r.res.ok);
+    wrong.forEach(r => {
+      r.done = false; r.res = null; r.input.disabled = false; r.input.value = '';
+      r.box.classList.remove('ok', 'bad'); r.box.querySelectorAll('.why').forEach(n => n.remove());
+      const input = r.input;
+      r.sent.replaceChildren(...[...sentenceNodes(r.it, input), el('span', { class: 'base', text: '(' + r.it.base + ')' }), r.czBtn].filter(Boolean));
+    });
+    resultBox.replaceChildren();
+    checkBtn.hidden = false; actions.replaceChildren(checkBtn);
+    wrong[0].input.focus();
+  }
+  checkBtn.addEventListener('click', check);
+
+  app.replaceChildren(
+    el('a', { class: 'back', href: '#/', text: '← All sets' }),
+    el('h1', { text: 'Set ' + id, tabindex: '-1' }),
+    el('p', { class: 'lead', text: set.title + '. Write the correct form of the word in brackets.' }),
+    resultBox,
+    el('div', { class: 'tools' }, czToggle),
+    el('ol', { class: 'ex' }, rows.map(r => r.box)),
+    actions);
+  applyCz(czAll);
+  app.querySelector('h1').focus({ preventScroll: true });
+  window.scrollTo(0, 0);
+  rows[0].input.focus({ preventScroll: true });
+}
+function route(){
+  const m = location.hash.match(/^#\/set\/(\d+)/);
+  if (m) setView(parseInt(m[1], 10)); else home();
+}
+window.addEventListener('hashchange', route);
+document.getElementById('reset').addEventListener('click', () => {
+  if (confirm('Delete your saved scores?')) { store = {}; save(); route(); }
+});
+route();
+</script>
+</body>
+</html>
