@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Word formation practice</title>
+<title>Word formation exercises</title>
 <meta name="description" content="Word formation practice for STANAG Level 2: complete the sentences with the correct form of the word in brackets. Ten sentences per set with feedback.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,7 +95,7 @@ footer button{font:inherit;background:none;border:0;color:var(--muted);text-deco
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="#/">Word formation</a>
+  <a class="brand" href="#/">Word formation exercises</a>
   <span class="sub">STANAG Level 2 · <a href="../">All practice</a></span>
 </header>
 <main id="app" class="wrap"></main>
@@ -143,7 +143,7 @@ function sentenceNodes(it, input){
 }
 
 function home(){
-  document.title = 'Word formation practice';
+  document.title = 'Word formation exercises';
   const list = el('ol', { class: 'sets' });
   SETS.forEach(s => {
     const best = store[s.id];
@@ -153,7 +153,7 @@ function home(){
       el('span', { class: 'best' + (best === 10 ? ' full' : ''), text: best == null ? '10 sentences' : 'best ' + best + '/10' }))));
   });
   app.replaceChildren(
-    el('h1', { text: 'Word formation', tabindex: '-1' }),
+    el('h1', { text: 'Word formation exercises', tabindex: '-1' }),
     el('p', { class: 'lead', text: 'Complete each sentence with the correct form of the word in brackets. The word always has to change. After ten sentences you get your score and feedback on every answer.' }),
     list);
   app.querySelector('h1').focus({ preventScroll: true });
