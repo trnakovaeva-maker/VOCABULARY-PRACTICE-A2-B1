@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Irregular verbs</title>
+<meta name="description" content="Irregular verbs practice for STANAG Level 2: learn the verbs by pattern, mixed drills on the past simple and past participle, and short past-tense stories with feedback.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3effa; --surface:#ffffff; --ink:#14202e; --muted:#566576; --line:#d9d0ea;
+  --accent:#6d28d9; --accent-ink:#ffffff; --accent-soft:#ece4fb;
+  --good:#1d7a3c; --good-soft:#dff1e4; --bad:#b3342b; --bad-soft:#f9e1de; --focus:#e08a00;
+  --radius:10px;
+  --font:'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15101f; --surface:#1f1830; --ink:#ece8f4; --muted:#aaa2bd; --line:#3a2f55;
+    --accent:#c4a8ff; --accent-ink:#1a0d36; --accent-soft:#35285a;
+    --good:#6ccb8a; --good-soft:#143323; --bad:#f28b82; --bad-soft:#3a1a18; --focus:#ffb938;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{border-top:6px solid var(--accent);margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.5}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+h1,h2,h3{line-height:1.15;margin:0}
+h1:focus{outline:none}
+h1{font-size:clamp(2rem,5vw,2.9rem);font-weight:700;letter-spacing:-.02em}
+h2{font-size:1.3rem;font-weight:700}
+p{margin:0}
+.wrap{max-width:860px;margin:0 auto;padding:1.5rem 1rem 4rem}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;max-width:860px;margin:0 auto}
+header.top a.brand{font-weight:700;text-decoration:none;color:var(--accent);font-size:1.05rem}
+header.top .sub{color:var(--muted);font-size:.92rem}
+.lead{max-width:62ch;color:var(--muted);margin-top:.8rem;font-size:1.05rem}
+.muted{color:var(--muted)}
+.back{display:inline-block;margin-bottom:1rem;text-decoration:none;font-weight:700}
+.back:hover{text-decoration:underline}
+.btn{font:inherit;font-weight:700;cursor:pointer;border-radius:var(--radius);padding:.65rem 1.1rem;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);text-decoration:none;display:inline-block;line-height:1.2}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.ghost:hover{background:var(--accent-soft);filter:none}
+.btn.small{padding:.4rem .75rem;font-size:.95rem}
+
+.sec{margin-top:2rem}
+.sec h2{color:var(--accent)}
+.sec .d{color:var(--muted);font-size:.98rem;margin-top:.3rem;max-width:64ch}
+.sets{list-style:none;padding:0;margin:.9rem 0 0;display:grid;gap:.5rem;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.sets a{display:flex;gap:.8rem;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:var(--radius);padding:.6rem .8rem;text-decoration:none;color:var(--ink);height:100%}
+.sets a:hover{border-color:var(--accent)}
+.sets .n{font-size:1.4rem;font-weight:700;color:var(--accent);min-width:1.6rem;text-align:center}
+.sets .t{font-weight:700;font-size:.95rem;line-height:1.25}
+.sets .best{margin-left:auto;font-weight:700;color:var(--muted);white-space:nowrap;font-size:.9rem}
+.sets .best.full{color:var(--good)}
+
+.ex{list-style:none;padding:0;margin:1.2rem 0 0;display:grid;gap:.5rem}
+.item{display:grid;grid-template-columns:2rem 1fr;gap:.2rem .6rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:.7rem 1rem}
+.item .no{font-weight:700;color:var(--accent);padding-top:.2rem}
+.item .main{display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center}
+.item .inf{font-size:1.35rem;font-weight:700;min-width:6.5rem}
+.item.ok{border-color:var(--good);background:var(--good-soft)}
+.item.bad{border-color:var(--bad);background:var(--bad-soft)}
+.item.ok .no{color:var(--good)}.item.bad .no{color:var(--bad)}
+.tin{font:inherit;font-size:1.2rem;color:var(--ink);background:transparent;border:0;border-bottom:3px solid var(--accent);border-radius:0;padding:.1rem .3em;text-align:center;outline:none;width:9.5ch;max-width:100%}
+.tin:focus{background:var(--accent-soft)}
+.tin::placeholder{color:var(--muted);font-size:.8rem;opacity:.9}
+.tin.w2{width:12.5ch}
+.arrow{color:var(--muted)}
+.rok{color:var(--good);font-weight:700;border-bottom:3px solid var(--good);padding:0 .3em}
+.rno{color:var(--bad);text-decoration:line-through;text-decoration-thickness:2px;padding:0 .3em;margin-right:.3em}
+.why{grid-column:2;font-size:.98rem;color:var(--muted)}
+.why b{color:var(--ink)}
+.msg{font-weight:700;color:var(--bad)}
+.czbtn{font:inherit;font-size:.72rem;font-weight:700;cursor:pointer;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:6px;padding:.05rem .4rem;line-height:1.4}
+.czbtn:hover{border-color:var(--accent);color:var(--accent)}
+.czbtn[aria-pressed=true]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.czline{grid-column:2;color:var(--muted);font-style:italic;font-size:1.02rem}
+.tools{display:flex;gap:.6rem;align-items:center;margin-top:1rem;flex-wrap:wrap}
+
+.story{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.2rem;margin-top:1.2rem;font-size:1.2rem;line-height:2.15}
+.story .inf{font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:8px;padding:0 .45rem;white-space:nowrap;font-size:1rem}
+.story .g{display:inline-block;white-space:nowrap}
+.story .gno{font-size:.7rem;font-weight:700;color:var(--muted);vertical-align:super;margin-right:.15rem}
+.story .czstory{font-style:italic;color:var(--muted);font-size:1.02rem;line-height:1.6;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed var(--line)}
+.fbl{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.4rem}
+.fbl li{border-radius:var(--radius);padding:.5rem .8rem;border:1px solid var(--line);background:var(--surface);font-size:1rem}
+.fbl li.ok{border-color:var(--good);background:var(--good-soft)}
+.fbl li.bad{border-color:var(--bad);background:var(--bad-soft)}
+
+.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem;align-items:center}
+.result{margin-top:1.4rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem 1.2rem 1.4rem}
+.score{font-size:clamp(2.4rem,8vw,3.4rem);font-weight:700;letter-spacing:-.02em;line-height:1}
+.score small{font-size:1.1rem;color:var(--muted);font-weight:400;letter-spacing:0}
+.verdict{margin-top:.5rem;font-size:1.1rem}
+footer{max-width:860px;margin:0 auto;padding:0 1rem 3rem;color:var(--muted);font-size:.88rem}
+footer p{max-width:70ch;margin-bottom:.5rem}
+footer button{font:inherit;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0}
+
+.intro{background:var(--accent-soft);border-radius:var(--radius);padding:.8rem 1rem;margin-top:1rem;max-width:70ch}
+.hint{color:var(--muted);font-size:.92rem;margin-top:.7rem}
+.tw{overflow-x:auto;margin-top:.8rem}
+.lt{border-collapse:separate;border-spacing:0;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.lt th{text-align:left;font-size:.85rem;color:var(--muted);padding:.5rem .7rem;border-bottom:1px solid var(--line);white-space:nowrap}
+.lt td{padding:.35rem .7rem;border-bottom:1px solid var(--line);font-size:1.12rem;vertical-align:middle}
+.lt tr:last-child td{border-bottom:0}
+.lt tr.now td{background:var(--accent-soft)}
+.lt td.pl{width:2.6rem;padding-right:0}
+.lt td.c-cz{color:var(--muted);font-size:.95rem}
+.lt td.hid{background:var(--accent-soft);color:transparent;cursor:pointer;user-select:none}
+.lt td.hid .w{color:transparent;pointer-events:none}
+.w{font:inherit;font-weight:700;color:var(--ink);background:none;border:0;padding:.1rem .15rem;cursor:pointer;border-radius:5px}
+.w:hover{color:var(--accent);background:var(--accent-soft)}
+.listen{font:inherit;font-size:1rem;cursor:pointer;background:transparent;border:1px solid var(--line);border-radius:8px;padding:.1rem .45rem;line-height:1.4}
+.listen:hover{border-color:var(--accent);background:var(--accent-soft)}
+.prog{margin-top:.8rem;font-weight:700}
+.tools .btn[aria-pressed=true]{background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#/">Irregular verbs</a>
+  <span class="sub">STANAG Level 2 · <a href="../">All practice</a></span>
+</header>
+<main id="app" class="wrap"></main>
+<footer>
+  <p>Common irregular verbs for levels A2 and B1. British forms are given first. The Czech translations and the stories were written for classroom practice.</p>
+  <p>Your best scores are saved in this browser only. <button type="button" id="reset">Reset my scores</button></p>
+</footer>
+<script>
+const DATA = {"verbs":[{"inf":"cut","past":["cut"],"pp":["cut"],"cz":"řezat, stříhat"},{"inf":"put","past":["put"],"pp":["put"],"cz":"dát, položit"},{"inf":"hit","past":["hit"],"pp":["hit"],"cz":"udeřit, trefit"},{"inf":"hurt","past":["hurt"],"pp":["hurt"],"cz":"zranit, bolet"},{"inf":"let","past":["let"],"pp":["let"],"cz":"nechat, dovolit"},{"inf":"shut","past":["shut"],"pp":["shut"],"cz":"zavřít"},{"inf":"set","past":["set"],"pp":["set"],"cz":"nastavit, položit"},{"inf":"cost","past":["cost"],"pp":["cost"],"cz":"stát (o ceně)"},{"inf":"quit","past":["quit"],"pp":["quit"],"cz":"přestat, skončit"},{"inf":"spread","past":["spread"],"pp":["spread"],"cz":"šířit (se)"},{"inf":"buy","past":["bought"],"pp":["bought"],"cz":"koupit"},{"inf":"bring","past":["brought"],"pp":["brought"],"cz":"přinést"},{"inf":"think","past":["thought"],"pp":["thought"],"cz":"myslet, přemýšlet"},{"inf":"catch","past":["caught"],"pp":["caught"],"cz":"chytit"},{"inf":"teach","past":["taught"],"pp":["taught"],"cz":"učit"},{"inf":"fight","past":["fought"],"pp":["fought"],"cz":"bojovat"},{"inf":"sell","past":["sold"],"pp":["sold"],"cz":"prodat"},{"inf":"tell","past":["told"],"pp":["told"],"cz":"říct"},{"inf":"hold","past":["held"],"pp":["held"],"cz":"držet"},{"inf":"find","past":["found"],"pp":["found"],"cz":"najít"},{"inf":"leave","past":["left"],"pp":["left"],"cz":"odejít, opustit, nechat"},{"inf":"keep","past":["kept"],"pp":["kept"],"cz":"držet, uchovat"},{"inf":"sleep","past":["slept"],"pp":["slept"],"cz":"spát"},{"inf":"feel","past":["felt"],"pp":["felt"],"cz":"cítit"},{"inf":"meet","past":["met"],"pp":["met"],"cz":"potkat, setkat se"},{"inf":"send","past":["sent"],"pp":["sent"],"cz":"poslat"},{"inf":"spend","past":["spent"],"pp":["spent"],"cz":"utratit, strávit"},{"inf":"lend","past":["lent"],"pp":["lent"],"cz":"půjčit (někomu)"},{"inf":"build","past":["built"],"pp":["built"],"cz":"stavět"},{"inf":"bend","past":["bent"],"pp":["bent"],"cz":"ohnout"},{"inf":"make","past":["made"],"pp":["made"],"cz":"udělat, vyrobit"},{"inf":"say","past":["said"],"pp":["said"],"cz":"říct"},{"inf":"pay","past":["paid"],"pp":["paid"],"cz":"platit"},{"inf":"lay","past":["laid"],"pp":["laid"],"cz":"položit"},{"inf":"lose","past":["lost"],"pp":["lost"],"cz":"ztratit, prohrát"},{"inf":"sit","past":["sat"],"pp":["sat"],"cz":"sedět"},{"inf":"stand","past":["stood"],"pp":["stood"],"cz":"stát"},{"inf":"understand","past":["understood"],"pp":["understood"],"cz":"rozumět"},{"inf":"hear","past":["heard"],"pp":["heard"],"cz":"slyšet"},{"inf":"lead","past":["led"],"pp":["led"],"cz":"vést"},{"inf":"win","past":["won"],"pp":["won"],"cz":"vyhrát"},{"inf":"shoot","past":["shot"],"pp":["shot"],"cz":"střílet"},{"inf":"dig","past":["dug"],"pp":["dug"],"cz":"kopat"},{"inf":"stick","past":["stuck"],"pp":["stuck"],"cz":"přilepit, trčet"},{"inf":"feed","past":["fed"],"pp":["fed"],"cz":"krmit"},{"inf":"hang","past":["hung"],"pp":["hung"],"cz":"viset, pověsit"},{"inf":"mean","past":["meant"],"pp":["meant"],"cz":"znamenat"},{"inf":"read","past":["read"],"pp":["read"],"cz":"číst"},{"inf":"get","past":["got"],"pp":["got","gotten"],"cz":"dostat, získat"},{"inf":"have","past":["had"],"pp":["had"],"cz":"mít"},{"inf":"break","past":["broke"],"pp":["broken"],"cz":"rozbít, zlomit"},{"inf":"choose","past":["chose"],"pp":["chosen"],"cz":"vybrat"},{"inf":"speak","past":["spoke"],"pp":["spoken"],"cz":"mluvit"},{"inf":"steal","past":["stole"],"pp":["stolen"],"cz":"krást"},{"inf":"freeze","past":["froze"],"pp":["frozen"],"cz":"zmrznout"},{"inf":"wake","past":["woke"],"pp":["woken"],"cz":"probudit (se)"},{"inf":"wear","past":["wore"],"pp":["worn"],"cz":"nosit (oblečení)"},{"inf":"tear","past":["tore"],"pp":["torn"],"cz":"roztrhnout"},{"inf":"forget","past":["forgot"],"pp":["forgotten"],"cz":"zapomenout"},{"inf":"shake","past":["shook"],"pp":["shaken"],"cz":"třást"},{"inf":"take","past":["took"],"pp":["taken"],"cz":"vzít"},{"inf":"give","past":["gave"],"pp":["given"],"cz":"dát"},{"inf":"eat","past":["ate"],"pp":["eaten"],"cz":"jíst"},{"inf":"fall","past":["fell"],"pp":["fallen"],"cz":"padat"},{"inf":"hide","past":["hid"],"pp":["hidden"],"cz":"schovat (se)"},{"inf":"bite","past":["bit"],"pp":["bitten"],"cz":"kousnout"},{"inf":"ride","past":["rode"],"pp":["ridden"],"cz":"jet (na kole, koni)"},{"inf":"drive","past":["drove"],"pp":["driven"],"cz":"řídit"},{"inf":"rise","past":["rose"],"pp":["risen"],"cz":"stoupat"},{"inf":"write","past":["wrote"],"pp":["written"],"cz":"psát"},{"inf":"know","past":["knew"],"pp":["known"],"cz":"vědět, znát"},{"inf":"grow","past":["grew"],"pp":["grown"],"cz":"růst, pěstovat"},{"inf":"throw","past":["threw"],"pp":["thrown"],"cz":"hodit"},{"inf":"blow","past":["blew"],"pp":["blown"],"cz":"foukat"},{"inf":"fly","past":["flew"],"pp":["flown"],"cz":"létat"},{"inf":"draw","past":["drew"],"pp":["drawn"],"cz":"kreslit, táhnout"},{"inf":"show","past":["showed"],"pp":["shown"],"cz":"ukázat"},{"inf":"see","past":["saw"],"pp":["seen"],"cz":"vidět"},{"inf":"do","past":["did"],"pp":["done"],"cz":"dělat"},{"inf":"go","past":["went"],"pp":["gone"],"cz":"jít, jet"},{"inf":"sing","past":["sang"],"pp":["sung"],"cz":"zpívat"},{"inf":"drink","past":["drank"],"pp":["drunk"],"cz":"pít"},{"inf":"swim","past":["swam"],"pp":["swum"],"cz":"plavat"},{"inf":"begin","past":["began"],"pp":["begun"],"cz":"začít"},{"inf":"ring","past":["rang"],"pp":["rung"],"cz":"zvonit, zavolat"},{"inf":"sink","past":["sank"],"pp":["sunk"],"cz":"potopit se"},{"inf":"run","past":["ran"],"pp":["run"],"cz":"běžet"},{"inf":"come","past":["came"],"pp":["come"],"cz":"přijít"},{"inf":"become","past":["became"],"pp":["become"],"cz":"stát se"},{"inf":"be","past":["was","were"],"pp":["been"],"cz":"být","pastDisp":"was/were"}],"groups":[{"title":"No change: cut – cut – cut","verbs":["cut","put","hit","hurt","let","shut","set","cost","quit","spread"],"intro":"Všechna tato slovesa mají ve všech třech tvarech stejnou podobu: infinitiv, minulý čas i příčestí minulé se nemění (cut – cut – cut). Rozdíl poznáte jen z kontextu, např. podle slov yesterday nebo last week."},{"title":"Past simple = past participle (1)","verbs":["buy","bring","think","catch","teach","fight","sell","tell","hold","find"],"intro":"Druhý a třetí tvar je u těchto sloves stejný (např. bought – bought), ale liší se od infinitivu. Většina z nich má v minulém čase koncovku -ought nebo -aught (buy – bought, teach – taught); další mají koncovku -old, -eld nebo -ound (sell – sold, hold – held, find – found)."},{"title":"Past simple = past participle (2)","verbs":["leave","keep","sleep","feel","meet","send","spend","lend","build","bend"],"intro":"Druhý a třetí tvar je stejný. Slovesa s dlouhou samohláskou ji v minulém čase zkracují a přidávají -t (keep – kept, feel – felt, leave – left); slovesa končící na -d mění koncové -d na -t (send – sent, build – built, bend – bent)."},{"title":"Past simple = past participle (3)","verbs":["make","say","pay","lay","lose","sit","stand","understand","hear","lead"],"intro":"Druhý a třetí tvar je opět stejný, ale tato slovesa nemají jednotný vzor, musíte se je naučit. Pozor na pravopis: said, paid a laid se píší bez -y- před koncovkou (ne payed ani layed)."},{"title":"Past simple = past participle (4)","verbs":["win","shoot","dig","stick","feed","hang","mean","read","get","have"],"intro":"Další slovesa, u kterých je druhý a třetí tvar stejný. Pozor na výslovnost: read se v minulém čase píše stejně jako infinitiv, ale čte se /red/. Sloveso get má v britské angličtině got – got, v americké got – gotten."},{"title":"Past participle ends in -n (1)","verbs":["break","choose","speak","steal","freeze","wake","wear","tear","forget","shake"],"intro":"Všechny tři tvary jsou různé. Příčestí minulé končí na -n nebo -en a vychází z druhého tvaru (break – broke – broken, speak – spoke – spoken). Druhý tvar se všem těmto slovesům liší samohláskou (nejčastěji -o-)."},{"title":"Past participle ends in -n (2)","verbs":["take","give","eat","fall","hide","bite","ride","drive","rise","write"],"intro":"Všechny tři tvary jsou různé a příčestí končí na -n nebo -en. Tentokrát vychází z infinitivu (take – taken, give – given, write – written). Druhý tvar mění samohlásku (take – took, give – gave, eat – ate)."},{"title":"know – knew – known and others","verbs":["know","grow","throw","blow","fly","draw","show","see","do","go"],"intro":"Většina těchto sloves mívá druhý tvar na -ew a příčestí na -n (know – knew – known, grow – grew – grown, fly – flew – flown, draw – drew – drawn). Zbylá (show, see, do, go) se jednotnému vzoru vymykají, ale všechna mají tři různé tvary."},{"title":"sing – sang – sung and others","verbs":["sing","drink","swim","begin","ring","sink","run","come","become","be"],"intro":"Většina z těchto sloves se řídí vzorem samohlásek i – a – u (sing – sang – sung, drink – drank – drunk, swim – swam – swum, begin – began – begun). Sloveso run, come a become mají příčestí stejné jako infinitiv, a sloveso be je zcela nepravidelné (was/were – been)."}],"sets":[{"title":"Mixed set 1","verbs":["ride","buy","lead","freeze","drink","go","stand","sing","read","forget"]},{"title":"Mixed set 2","verbs":["send","hang","catch","make","blow","stick","give","lose","find","set"]},{"title":"Mixed set 3","verbs":["sleep","keep","mean","hit","lend","spread","wake","speak","hurt","fall"]},{"title":"Mixed set 4","verbs":["choose","hide","come","get","pay","know","eat","sell","feed","sit"]},{"title":"Mixed set 5","verbs":["spend","tell","shoot","write","become","dig","cut","say","fly","win"]},{"title":"Mixed set 6","verbs":["teach","lay","see","steal","understand","build","throw","bend","have","drive"]},{"title":"Mixed set 7","verbs":["ring","fight","wear","begin","let","cost","quit","put","leave","show"]},{"title":"Mixed set 8","verbs":["break","shut","rise","bring","hold","hear","run","think","swim","do"]},{"title":"Mixed set 9","verbs":["take","sink","feel","meet","draw","bite","be","shake","grow","tear"]}],"stories":[{"title":"My first day at the new base","parts":["Last Monday I ",{"inf":"start","ans":["started"],"irr":false}," my new job at the base. I ",{"inf":"wake","ans":["woke"],"irr":true}," up very early, ",{"inf":"drive","ans":["drove"],"irr":true}," for an hour and ",{"inf":"arrive","ans":["arrived"],"irr":false}," at seven o'clock. The officer ",{"inf":"meet","ans":["met"],"irr":true}," me at the gate and ",{"inf":"show","ans":["showed"],"irr":true}," me my office. It ",{"inf":"be","ans":["was"],"irr":true}," a long day, but I ",{"inf":"meet","ans":["met"],"irr":true}," many friendly people."],"cz":"Minulé pondělí jsem nastoupil/a do nové práce na základně. Probudil/a jsem se velmi brzy, hodinu jsem jel/a autem a v sedm hodin jsem dorazil/a. Důstojník mě potkal u brány a ukázal mi moji kancelář. Byl to dlouhý den, ale poznal/a jsem spoustu přátelských lidí."},{"title":"A car accident","parts":["Yesterday morning a car ",{"inf":"crash","ans":["crashed"],"irr":false}," into a tree on the road to Brno. The driver ",{"inf":"lose","ans":["lost"],"irr":true}," control because the road ",{"inf":"be","ans":["was"],"irr":true}," icy. A woman who ",{"inf":"see","ans":["saw"],"irr":true}," the accident ",{"inf":"call","ans":["called"],"irr":false}," an ambulance. The police ",{"inf":"come","ans":["came"],"irr":true}," quickly and ",{"inf":"close","ans":["closed"],"irr":false}," the road for two hours. Luckily, nobody ",{"inf":"be","ans":["was"],"irr":true}," seriously hurt."],"cz":"Včera ráno narazilo auto do stromu na silnici do Brna. Řidič ztratil kontrolu, protože byla silnice namrzlá. Žena, která nehodu viděla, zavolala záchranku. Policie přijela rychle a uzavřela silnici na dvě hodiny. Naštěstí nebyl nikdo vážně zraněn."},{"title":"A weekend trip","parts":["Last weekend my friends and I ",{"inf":"go","ans":["went"],"irr":true}," to the mountains. We ",{"inf":"take","ans":["took"],"irr":true}," the early train and ",{"inf":"reach","ans":["reached"],"irr":false}," the village at nine. We ",{"inf":"walk","ans":["walked"],"irr":false}," for five hours and ",{"inf":"eat","ans":["ate"],"irr":true}," our lunch at the top. The view ",{"inf":"be","ans":["was"],"irr":true}," wonderful, and we ",{"inf":"be","ans":["were"],"irr":true}," tired but happy when we ",{"inf":"get","ans":["got"],"irr":true}," home."],"cz":"Minulý víkend jsme s přáteli jeli do hor. Vzali jsme brzký vlak a v devět jsme dorazili do vesnice. Šli jsme pět hodin a oběd jsme snědli na vrcholu. Výhled byl nádherný a když jsme se vrátili domů, byli jsme unavení, ale šťastní."},{"title":"A problem at the airport","parts":["I ",{"inf":"arrive","ans":["arrived"],"irr":false}," at the airport two hours before my flight, but I ",{"inf":"forget","ans":["forgot"],"irr":true}," my passport at home. I ",{"inf":"run","ans":["ran"],"irr":true}," outside, ",{"inf":"take","ans":["took"],"irr":true}," a taxi and ",{"inf":"return","ans":["returned"],"irr":false}," home. I ",{"inf":"find","ans":["found"],"irr":true}," the passport on the kitchen table. Fortunately, I ",{"inf":"get","ans":["got"],"irr":true}," back in time and ",{"inf":"catch","ans":["caught"],"irr":true}," the plane."],"cz":"Na letiště jsem dorazil/a dvě hodiny před odletem, ale doma jsem zapomněl/a pas. Vyběhl/a jsem ven, vzal/a si taxi a vrátil/a se domů. Pas jsem našel/našla na kuchyňském stole. Naštěstí jsem se vrátil/a včas a letadlo jsem stihl/a."},{"title":"A storm","parts":["On Friday night a strong storm ",{"inf":"hit","ans":["hit"],"irr":true}," our town. The wind ",{"inf":"blow","ans":["blew"],"irr":true}," so hard that it ",{"inf":"break","ans":["broke"],"irr":true}," several windows and ",{"inf":"knock","ans":["knocked"],"irr":false}," down trees. Our neighbour ",{"inf":"tell","ans":["told"],"irr":true}," us that the electricity ",{"inf":"be","ans":["was"],"irr":true}," out for six hours."],"cz":"V pátek v noci zasáhla naše město silná bouře. Vítr foukal tak silně, že rozbil několik oken a povalil stromy. Soused nám řekl, že elektřina nešla šest hodin."},{"title":"A job interview","parts":["Last week I ",{"inf":"have","ans":["had"],"irr":true}," an interview for a new job. I ",{"inf":"prepare","ans":["prepared"],"irr":false}," carefully and ",{"inf":"wear","ans":["wore"],"irr":true}," my best suit. The manager ",{"inf":"ask","ans":["asked"],"irr":false}," me many questions about my experience, and I ",{"inf":"answer","ans":["answered"],"irr":false}," them calmly. Two days later, they ",{"inf":"phone","ans":["phoned"],"irr":false}," me and ",{"inf":"say","ans":["said"],"irr":true}," that I ",{"inf":"get","ans":["got"],"irr":true}," the job."],"cz":"Minulý týden jsem měl/a pohovor na novou práci. Pečlivě jsem se připravil/a a oblékl/a si svůj nejlepší oblek. Vedoucí se mě ptal na mnoho otázek o mých zkušenostech a já jsem odpovídal/a klidně. O dva dny později mi zavolali a řekli, že jsem práci dostal/a."},{"title":"A surprise party","parts":["On Saturday we ",{"inf":"organise","ans":["organised","organized"],"irr":false}," a surprise party for my sister. My brother ",{"inf":"buy","ans":["bought"],"irr":true}," a big cake, and our friends ",{"inf":"bring","ans":["brought"],"irr":true}," drinks and music. When my sister ",{"inf":"open","ans":["opened"],"irr":false}," the door, everybody ",{"inf":"shout","ans":["shouted"],"irr":false}," 'Happy birthday!' She ",{"inf":"be","ans":["was"],"irr":true}," very surprised and ",{"inf":"cry","ans":["cried"],"irr":false}," with joy."],"cz":"V sobotu jsme uspořádali překvapivou oslavu pro moji sestru. Bratr koupil velký dort a přátelé přinesli pití a hudbu. Když sestra otevřela dveře, všichni zakřičeli „Všechno nejlepší!“ Byla velmi překvapená a plakala radostí."},{"title":"A robbery","parts":["At about ten o'clock last night, two men ",{"inf":"enter","ans":["entered"],"irr":false}," a small shop in the town centre. One of them ",{"inf":"point","ans":["pointed"],"irr":false}," a knife at the shop assistant, and the other ",{"inf":"take","ans":["took"],"irr":true}," money from the till. Then they ",{"inf":"run","ans":["ran"],"irr":true}," away and ",{"inf":"disappear","ans":["disappeared"],"irr":false}," in the dark. The shop assistant ",{"inf":"call","ans":["called"],"irr":false}," the police immediately."],"cz":"Včera v noci kolem desáté hodiny vstoupili do malého obchodu v centru města dva muži. Jeden z nich namířil nůž na prodavačku a druhý vzal peníze z pokladny. Pak utekli a zmizeli ve tmě. Prodavačka okamžitě zavolala policii."},{"title":"A holiday in Spain","parts":["Last summer my family ",{"inf":"spend","ans":["spent"],"irr":true}," two weeks in Spain. We ",{"inf":"stay","ans":["stayed"],"irr":false}," in a small hotel near the beach. Every morning we ",{"inf":"swim","ans":["swam"],"irr":true}," in the sea, and in the afternoon we ",{"inf":"visit","ans":["visited"],"irr":false}," old villages. I ",{"inf":"buy","ans":["bought"],"irr":true}," souvenirs for all my friends. It ",{"inf":"be","ans":["was"],"irr":true}," the best holiday we ever ",{"inf":"have","ans":["had"],"irr":true},"."],"cz":"Minulé léto strávila moje rodina dva týdny ve Španělsku. Bydleli jsme v malém hotelu u pláže. Každé ráno jsme plavali v moři a odpoledne jsme navštěvovali staré vesnice. Koupil/a jsem suvenýry pro všechny přátele. Byla to nejlepší dovolená, jakou jsme kdy měli."},{"title":"A military exercise","parts":["Last month our unit ",{"inf":"take","ans":["took"],"irr":true}," part in a big exercise in the forest. We ",{"inf":"build","ans":["built"],"irr":true}," a camp on the first day and ",{"inf":"sleep","ans":["slept"],"irr":true}," in tents. On the second day it ",{"inf":"begin","ans":["began"],"irr":true}," to rain, but we ",{"inf":"continue","ans":["continued"],"irr":false}," the training. At the end, the commander ",{"inf":"thank","ans":["thanked"],"irr":false}," everybody."],"cz":"Minulý měsíc se naše jednotka zúčastnila velkého cvičení v lese. První den jsme postavili tábor a spali jsme ve stanech. Druhý den začalo pršet, ale my jsme v tréninku pokračovali. Na závěr velitel všem poděkoval."},{"title":"A lost wallet","parts":["Yesterday I ",{"inf":"lose","ans":["lost"],"irr":true}," my wallet in the city centre. I ",{"inf":"search","ans":["searched"],"irr":false}," the shops and the streets, but I could not find it. Finally, a boy ",{"inf":"bring","ans":["brought"],"irr":true}," it to the police station, and the police ",{"inf":"phone","ans":["phoned"],"irr":false}," me. I ",{"inf":"give","ans":["gave"],"irr":true}," the boy a small reward."],"cz":"Včera jsem v centru města ztratil/a peněženku. Prohledal/a jsem obchody i ulice, ale nemohl/a jsem ji najít. Nakonec ji jeden chlapec přinesl na policejní stanici a policie mi zavolala. Chlapci jsem dal/a malou odměnu."},{"title":"A concert","parts":["Last Friday I ",{"inf":"go","ans":["went"],"irr":true}," to a concert with my friend. The band ",{"inf":"play","ans":["played"],"irr":false}," for two hours, and the singer ",{"inf":"sing","ans":["sang"],"irr":true}," all my favourite songs. We ",{"inf":"dance","ans":["danced"],"irr":false}," and ",{"inf":"laugh","ans":["laughed"],"irr":false}," a lot. After the concert we ",{"inf":"walk","ans":["walked"],"irr":false}," home together."],"cz":"Minulý pátek jsem šel/šla s kamarádem/kamarádkou na koncert. Kapela hrála dvě hodiny a zpěvák zazpíval všechny moje oblíbené písně. Hodně jsme tančili a smáli se. Po koncertě jsme šli společně domů."}]};
+const VERBS = {}; DATA.verbs.forEach(v => VERBS[v.inf] = v);
+const KEY = 'iv.v1';
+let store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
+const app = document.getElementById('app');
+function el(tag, attrs, ...kids){
+  const n = document.createElement(tag);
+  for (const k in (attrs || {})) {
+    const v = attrs[k];
+    if (v == null || v === false) continue;
+    if (k === 'class') n.className = v; else if (k === 'text') n.textContent = v;
+    else if (k.startsWith('on')) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v === true ? '' : v);
+  }
+  kids.flat().forEach(c => { if (c == null || c === false) return; n.append(c.nodeType ? c : document.createTextNode(c)); });
+  return n;
+}
+const norm = s => String(s).toLowerCase().replace(/[.,!?;:]+$/g, '').replace(/\s+/g, ' ').trim();
+function lev(a, b){
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i].concat(Array(b.length).fill(0)));
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++)
+    d[i][j] = Math.min(d[i-1][j] + 1, d[i][j-1] + 1, d[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+  return d[a.length][b.length];
+}
+// judge one typed form: acc = accepted forms, inf = infinitive, irregular = bool, kind = 'past' | 'pp'
+function judge(typed, acc, inf, irregular, kind){
+  const t = norm(typed);
+  if (!t) return { ok: false, msg: 'No answer.' };
+  if (acc.map(norm).includes(t)) return { ok: true };
+  if (t === norm(inf)) return { ok: false, msg: kind === 'pp' ? 'The past participle is different from the infinitive.' : 'The verb changes in the past – you wrote the infinitive.' };
+  if (irregular && /ed$/.test(t) && !acc.some(a => /ed$/.test(a))) return { ok: false, msg: 'This verb is irregular – do not add -ed.' };
+  if (acc.some(a => lev(t, norm(a)) <= 1)) return { ok: false, msg: 'Almost! Check the spelling.' };
+  return { ok: false, msg: '' };
+}
+function pd(v){ return v.pastDisp || v.past[0]; }
+function forms(v){ return v.inf + ' \u2013 ' + pd(v) + ' \u2013 ' + v.pp[0]; }
+function attr(k){ return { type: 'text', autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false', 'aria-label': k }; }
+function scoreWord(score, total){
+  return score === total ? 'Perfect! Every answer is correct.' : score >= total * .8 ? 'Very good. Check the few mistakes.' : score >= total * .5 ? 'Good start. Look at the corrections and try the wrong ones again.' : 'Read the corrections carefully, then try again.';
+}
+function modeName(m){ return m === 'd1' ? 'Drill: past simple' : m === 'd2' ? 'Drill: past simple + participle' : 'Story'; }
+
+// ---------- audio ----------
+let audioP = null, curAudio = null, seq = 0;
+function loadAudio(){
+  if (window.IVAUDIO) return Promise.resolve();
+  if (!audioP) audioP = new Promise((res, rej) => { const s = document.createElement('script'); s.src = 'audio.js'; s.onload = res; s.onerror = () => { audioP = null; rej(); }; document.head.append(s); });
+  return audioP;
+}
+function stopAudio(){ seq++; if (curAudio) { try { curAudio.pause(); } catch (e) {} curAudio = null; } }
+function akey(w, kind){ return (w === 'read' && kind !== 'inf') ? 'read~' : w; }
+function playKeys(keys){
+  stopAudio(); const id = seq;
+  return loadAudio().then(() => new Promise(done => {
+    let i = 0;
+    const next = () => {
+      if (id !== seq || i >= keys.length) return done();
+      const d = window.IVAUDIO[keys[i++]]; if (!d) return next();
+      const a = new Audio('data:audio/mpeg;base64,' + d); curAudio = a;
+      a.onended = () => setTimeout(next, 250); a.onerror = next; a.play().catch(next);
+    };
+    next();
+  })).catch(() => {});
+}
+function verbKeys(v){
+  const k = [akey(v.inf, 'inf')];
+  v.past.forEach(w => k.push(akey(w, 'past')));
+  v.pp.forEach(w => { if (!v.past.includes(w) || v.pp.length > 1) k.push(akey(w, 'pp')); });
+  return [...new Set(k)].length === 1 ? [k[0], k[0], k[0]] : k;
+}
+function listenBtn(v){
+  return el('button', { class: 'listen', type: 'button', title: 'Listen', 'aria-label': 'Listen: ' + forms(v), text: '🔊', onclick: () => playKeys(verbKeys(v)) });
+}
+
+function bestOf(mode, i){
+  if (mode === 's') return DATA.stories[i].parts.filter(p => typeof p !== 'string').length;
+  return 10;
+}
+function home(){
+  document.title = 'Irregular verbs';
+  stopAudio();
+  function sec(title, desc, mode, items){
+    const list = el('ol', { class: 'sets' });
+    items.forEach((s, i) => {
+      const k = mode + '-' + (i + 1), best = store[k], tot = bestOf(mode, i);
+      list.append(el('li', null, el('a', { href: '#/' + mode + '/' + (i + 1) },
+        el('span', { class: 'n', text: i + 1 }), el('span', { class: 't', text: s }),
+        mode === 'l' ? null : el('span', { class: 'best' + (best === tot ? ' full' : ''), text: best == null ? '' : best + '/' + tot }))));
+    });
+    return el('section', { class: 'sec' }, el('h2', { text: title }), el('p', { class: 'd', text: desc }), list);
+  }
+  app.replaceChildren(
+    el('h1', { text: 'Irregular verbs', tabindex: '-1' }),
+    el('p', { class: 'lead', text: 'First learn the verbs in logical groups, then test yourself in mixed drills with instant feedback, and finally use the past simple in short stories.' }),
+    sec('Learn', 'All the irregular verbs, grouped by the way they change. Listen to them and hide a column to test yourself.', 'l', DATA.groups.map(s => s.title)),
+    sec('Drill 1: past simple (mixed)', 'You see the infinitive. Type the past simple form. You get feedback after every verb.', 'd1', DATA.sets.map(s => s.title)),
+    sec('Drill 2: past simple and past participle (mixed)', 'You see the infinitive. Type both forms. You get feedback after every verb.', 'd2', DATA.sets.map(s => s.title)),
+    sec('Stories in the past', 'Short reports and descriptions of events. Put every verb in brackets into the past simple. Regular verbs are included.', 's', DATA.stories.map(s => s.title)));
+  app.querySelector('h1').focus({ preventScroll: true });
+}
+
+function setCz(r, on){ r.czLine.hidden = !on; r.czBtn.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+
+function learnView(n){
+  const g = DATA.groups[n - 1];
+  if (!g) return home();
+  document.title = 'Learn · Group ' + n + ' · Irregular verbs';
+  stopAudio();
+  const COLS = [['inf', 'Infinitive'], ['past', 'Past simple'], ['pp', 'Past participle'], ['cz', 'Czech']];
+  const hidden = { inf: false, past: false, pp: false, cz: false };
+  const cells = [];
+  const tbody = el('tbody');
+  const rows = g.verbs.map(inf => {
+    const v = VERBS[inf];
+    const forms3 = { inf: [v.inf], past: v.past, pp: v.pp };
+    const tr = el('tr'); const r = { v, tr };
+    const no = el('td', { class: 'pl' }, listenBtn(v)); tr.append(no);
+    COLS.forEach(([c]) => {
+      const td = el('td', { class: 'c-' + c });
+      if (c === 'cz') td.append(v.cz);
+      else forms3[c].forEach((w, i) => {
+        if (i) td.append(' / ');
+        td.append(el('button', { class: 'w', type: 'button', text: w, onclick: () => playKeys([akey(w, c)]) }));
+      });
+      td.addEventListener('click', e => { if (td.classList.contains('hid')) { td.classList.remove('hid'); td.classList.add('rev'); if (c !== 'cz') playKeys([akey(forms3[c][0], c)]); e.stopPropagation(); } }, true);
+      cells.push({ c, td }); tr.append(td);
+    });
+    tbody.append(tr); return r;
+  });
+  const colBtns = COLS.map(([c, label]) => {
+    const b = el('button', { class: 'btn ghost small', type: 'button', 'aria-pressed': 'false', text: 'Hide: ' + label });
+    b.addEventListener('click', () => {
+      hidden[c] = !hidden[c];
+      b.setAttribute('aria-pressed', String(hidden[c])); b.textContent = (hidden[c] ? 'Show: ' : 'Hide: ') + label;
+      cells.filter(x => x.c === c).forEach(x => { x.td.classList.toggle('hid', hidden[c]); x.td.classList.remove('rev'); });
+    });
+    return b;
+  });
+  let playing = false;
+  const playAll = el('button', { class: 'btn small', type: 'button', text: '🔊 Listen to all' });
+  playAll.addEventListener('click', async () => {
+    if (playing) { playing = false; stopAudio(); playAll.textContent = '🔊 Listen to all'; rows.forEach(r => r.tr.classList.remove('now')); return; }
+    playing = true; playAll.textContent = '■ Stop';
+    for (const r of rows) {
+      if (!playing) break;
+      r.tr.classList.add('now'); r.tr.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      await playKeys(verbKeys(r.v)); r.tr.classList.remove('now');
+      if (!playing) break;
+      await new Promise(res => setTimeout(res, 300));
+    }
+    playing = false; playAll.textContent = '🔊 Listen to all';
+  });
+  const table = el('table', { class: 'lt' },
+    el('thead', null, el('tr', null, el('th', { text: '' }), COLS.map(([, l]) => el('th', { text: l })))), tbody);
+  const prev = n > 1 ? el('a', { class: 'btn ghost', href: '#/l/' + (n - 1), text: '← Previous group' }) : null;
+  const next = n < DATA.groups.length ? el('a', { class: 'btn ghost', href: '#/l/' + (n + 1), text: 'Next group →' }) : el('a', { class: 'btn', href: '#/d1/1', text: 'Start the drills' });
+  app.replaceChildren(
+    el('a', { class: 'back', href: '#/', text: '← All sets' }),
+    el('h1', { text: 'Learn · Group ' + n, tabindex: '-1' }),
+    el('p', { class: 'lead', text: g.title }),
+    el('div', { class: 'intro' }, el('b', { text: 'Co mají tato slovesa společné: ' }), g.intro),
+    el('div', { class: 'tools' }, playAll, colBtns),
+    el('p', { class: 'hint', text: 'Click a word (or the speaker) to hear it. Hide a column and test yourself; click a hidden cell to reveal it.' }),
+    el('div', { class: 'tw' }, table),
+    el('div', { class: 'actions' }, prev, next, el('a', { class: 'btn ghost', href: '#/', text: 'All sets' })));
+  app.querySelector('h1').focus({ preventScroll: true });
+  window.scrollTo(0, 0);
+}
+
+function drillView(mode, n){
+  const set = DATA.sets[n - 1];
+  if (!set) return home();
+  stopAudio();
+  const both = mode === 'd2';
+  document.title = modeName(mode) + ' · Set ' + n + ' · Irregular verbs';
+  const rows = set.verbs.map((inf, i) => {
+    const v = VERBS[inf];
+    const i1 = el('input', Object.assign({ class: 'tin', placeholder: 'past simple' }, attr('Past simple of ' + inf)));
+    const i2 = both ? el('input', Object.assign({ class: 'tin w2', placeholder: 'past participle' }, attr('Past participle of ' + inf))) : null;
+    const czBtn = el('button', { class: 'czbtn', type: 'button', 'aria-pressed': 'false', title: 'Show / hide the Czech translation', text: 'CZ' });
+    const czLine = el('div', { class: 'czline', text: v.cz }); czLine.hidden = true;
+    const ok = el('button', { class: 'btn small', type: 'button', text: 'Check' });
+    const main = el('div', { class: 'main' }, el('span', { class: 'inf', text: inf }), el('span', { class: 'arrow', text: '→' }), i1, i2, ok, czBtn);
+    const box = el('li', { class: 'item' }, el('span', { class: 'no', text: i + 1 }), main, czLine);
+    const r = { v, i1, i2, ok, box, main, czBtn, czLine, done: false };
+    czBtn.addEventListener('click', () => setCz(r, czLine.hidden));
+    return r;
+  });
+  const resultBox = el('div', { 'aria-live': 'polite' });
+  const progress = el('p', { class: 'muted prog' });
+  const actions = el('div', { class: 'actions' });
+  let czAll = false; try { czAll = localStorage.getItem('iv.cz') === '1'; } catch (e) {}
+  const czToggle = el('button', { class: 'btn ghost small', type: 'button', 'aria-pressed': 'false', text: 'Show Czech translations' });
+  const applyCz = on => { rows.forEach(r => setCz(r, on)); czToggle.setAttribute('aria-pressed', on ? 'true' : 'false'); czToggle.textContent = on ? 'Hide Czech translations' : 'Show Czech translations'; try { localStorage.setItem('iv.cz', on ? '1' : '0'); } catch (e) {} };
+  czToggle.addEventListener('click', () => applyCz(czToggle.getAttribute('aria-pressed') !== 'true'));
+  const fields = r => [r.i1, r.i2].filter(Boolean);
+  function updProg(){ const d = rows.filter(r => r.done).length, s = rows.filter(r => r.done && r.res.ok).length; progress.textContent = d + ' / 10 checked · ' + s + ' correct'; }
+
+  rows.forEach(r => {
+    r.ok.addEventListener('click', () => checkRow(r));
+    fields(r).forEach(f => f.addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return; e.preventDefault();
+      if (f === r.i1 && r.i2 && !r.i2.value.trim()) { r.i2.focus(); return; }
+      checkRow(r);
+    }));
+  });
+  function showRow(r){
+    const v = r.v;
+    r.box.classList.remove('ok', 'bad'); r.box.classList.add(r.res.ok ? 'ok' : 'bad');
+    r.box.querySelectorAll('.why').forEach(x => x.remove());
+    const parts = [el('span', { class: 'inf', text: v.inf }), el('span', { class: 'arrow', text: '→' })];
+    const one = (res, typed, ans) => res.ok ? [el('span', { class: 'rok', text: ans })] : [typed ? el('span', { class: 'rno', text: typed }) : null, el('span', { class: 'rok', text: ans })];
+    parts.push(...one(r.r1, r.t1, pd(v)));
+    if (both) parts.push(...one(r.r2, r.t2, v.pp[0]));
+    parts.push(listenBtn(v), r.czBtn);
+    r.main.replaceChildren(...parts.filter(Boolean));
+    const why = el('div', { class: 'why' });
+    const msgs = [r.r1.msg, r.r2 && r.r2.msg].filter(Boolean);
+    if (msgs.length) why.append(el('span', { class: 'msg', text: [...new Set(msgs)].join(' ') + ' ' }));
+    why.append(el('b', { text: forms(v) }));
+    const also = [v.pastDisp ? null : v.past[1], v.pp[1]].filter(Boolean); if (also.length) why.append(' (also: ' + also.join(', ') + ')');
+    r.box.append(why);
+  }
+  function checkRow(r){
+    if (r.done) return;
+    r.t1 = r.i1.value.trim(); r.t2 = r.i2 ? r.i2.value.trim() : '';
+    r.r1 = judge(r.t1, r.v.past, r.v.inf, true, 'past');
+    r.r2 = both ? judge(r.t2, r.v.pp, r.v.inf, true, 'pp') : null;
+    r.res = { ok: r.r1.ok && (!both || r.r2.ok) };
+    r.done = true; showRow(r); updProg();
+    const nx = rows.find(x => !x.done);
+    if (nx) nx.i1.focus({ preventScroll: false }); else finish();
+  }
+  function finish(){
+    const score = rows.filter(r => r.res.ok).length;
+    const k = mode + '-' + n;
+    if (store[k] == null || score > store[k]) { store[k] = score; save(); }
+    const wrong = rows.filter(r => !r.res.ok);
+    resultBox.replaceChildren(el('div', { class: 'result' },
+      el('div', { class: 'score' }, score + '', el('small', { text: ' / 10' })),
+      el('p', { class: 'verdict', text: scoreWord(score, 10) })));
+    const next = n < DATA.sets.length ? n + 1 : null;
+    actions.replaceChildren(...[
+      wrong.length ? el('button', { class: 'btn', type: 'button', text: 'Try the ' + wrong.length + ' wrong ' + (wrong.length === 1 ? 'one' : 'ones') + ' again', onclick: retry }) : null,
+      el('button', { class: 'btn ' + (wrong.length ? 'ghost' : ''), type: 'button', text: 'Start this set again', onclick: () => drillView(mode, n) }),
+      next ? el('a', { class: 'btn ghost', href: '#/' + mode + '/' + next, text: 'Next set' }) : null,
+      el('a', { class: 'btn ghost', href: '#/', text: 'All sets' })].filter(Boolean));
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function retry(){
+    const wrong = rows.filter(r => !r.res.ok);
+    wrong.forEach(r => {
+      r.done = false; r.res = null; fields(r).forEach(f => { f.value = ''; });
+      r.box.classList.remove('ok', 'bad'); r.box.querySelectorAll('.why').forEach(x => x.remove());
+      r.main.replaceChildren(...[el('span', { class: 'inf', text: r.v.inf }), el('span', { class: 'arrow', text: '→' }), r.i1, r.i2, r.ok, r.czBtn].filter(Boolean));
+    });
+    resultBox.replaceChildren(); actions.replaceChildren(); updProg();
+    wrong[0].i1.focus();
+  }
+  app.replaceChildren(
+    el('a', { class: 'back', href: '#/', text: '← All sets' }),
+    el('h1', { text: modeName(mode) + ' · Set ' + n, tabindex: '-1' }),
+    el('p', { class: 'lead', text: (both ? 'Write the past simple and the past participle.' : 'Write the past simple.') + ' Press Enter to check each verb.' }),
+    el('div', { class: 'tools' }, czToggle),
+    progress, resultBox,
+    el('ol', { class: 'ex' }, rows.map(r => r.box)), actions);
+  updProg(); applyCz(czAll);
+  app.querySelector('h1').focus({ preventScroll: true });
+  window.scrollTo(0, 0);
+  rows[0].i1.focus({ preventScroll: true });
+}
+
+function storyView(n){
+  const st = DATA.stories[n - 1];
+  if (!st) return home();
+  document.title = 'Story ' + n + ' · Irregular verbs';
+  stopAudio();
+  const gaps = [];
+  const story = el('div', { class: 'story' });
+  st.parts.forEach(p => {
+    if (typeof p === 'string') { story.append(p); return; }
+    const g = { p, input: el('input', Object.assign({ class: 'tin' }, attr('Gap ' + (gaps.length + 1) + ': ' + p.inf))), done: false };
+    gaps.push(g);
+    story.append(el('span', { class: 'g' }, el('span', { class: 'gno', text: gaps.length }), g.input, ' ', el('span', { class: 'inf', text: '(' + p.inf + ')' })));
+    g.holder = story.lastChild;
+  });
+  const czStory = el('div', { class: 'czstory', text: st.cz }); czStory.hidden = true;
+  story.append(czStory);
+  const czBtn = el('button', { class: 'btn ghost small', type: 'button', 'aria-pressed': 'false', text: 'Show Czech translation' });
+  czBtn.addEventListener('click', () => { czStory.hidden = !czStory.hidden; czBtn.setAttribute('aria-pressed', String(!czStory.hidden)); czBtn.textContent = czStory.hidden ? 'Show Czech translation' : 'Hide Czech translation'; });
+  const resultBox = el('div', { 'aria-live': 'polite' });
+  const checkBtn = el('button', { class: 'btn', type: 'button', text: 'Check my answers' });
+  const actions = el('div', { class: 'actions' }, checkBtn);
+  gaps.forEach((g, i) => g.input.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return; e.preventDefault();
+    const nx = gaps.slice(i + 1).find(x => !x.input.disabled); if (nx) nx.input.focus(); else checkBtn.click();
+  }));
+  function rule(p){
+    if (p.irr) { const v = VERBS[p.inf]; return 'irregular: ' + forms(v); }
+    return 'regular: ' + p.inf + ' → ' + p.ans[0];
+  }
+  function check(){
+    const list = el('ul', { class: 'fbl' });
+    gaps.filter(g => !g.done).forEach(g => {
+      g.res = judge(g.input.value, g.p.ans, g.p.inf, g.p.irr, 'past'); g.done = true; g.input.disabled = true;
+      const typed = g.input.value.trim();
+      g.holder.replaceChildren(el('span', { class: 'gno', text: gaps.indexOf(g) + 1 }),
+        ...(g.res.ok ? [el('span', { class: 'rok', text: g.p.ans[0] })] : [typed ? el('span', { class: 'rno', text: typed }) : null, el('span', { class: 'rok', text: g.p.ans[0] })]).filter(Boolean),
+        ' ', el('span', { class: 'inf', text: '(' + g.p.inf + ')' }));
+    });
+    gaps.forEach((g, i) => list.append(el('li', { class: g.res.ok ? 'ok' : 'bad' },
+      el('b', { text: (i + 1) + '. ' + (g.res.ok ? '✓ ' : '✗ ') }),
+      !g.res.ok && g.res.msg ? el('span', { class: 'msg', text: g.res.msg + ' ' }) : null,
+      el('b', { text: g.p.inf + ' → ' + g.p.ans[0] }), ' (' + rule(g.p) + ')')));
+    const score = gaps.filter(g => g.res.ok).length;
+    const k = 's-' + n;
+    if (!resultBox.dataset.scored) { resultBox.dataset.scored = '1'; if (store[k] == null || score > store[k]) { store[k] = score; save(); } }
+    const wrong = gaps.filter(g => !g.res.ok);
+    resultBox.replaceChildren(el('div', { class: 'result' },
+      el('div', { class: 'score' }, score + '', el('small', { text: ' / ' + gaps.length })),
+      el('p', { class: 'verdict', text: scoreWord(score, gaps.length) }), list));
+    checkBtn.hidden = true;
+    const next = n < DATA.stories.length ? n + 1 : null;
+    actions.replaceChildren(...[
+      wrong.length ? el('button', { class: 'btn', type: 'button', text: 'Try the ' + wrong.length + ' wrong ' + (wrong.length === 1 ? 'gap' : 'gaps') + ' again', onclick: retry }) : null,
+      el('button', { class: 'btn ' + (wrong.length ? 'ghost' : ''), type: 'button', text: 'Start this story again', onclick: () => storyView(n) }),
+      next ? el('a', { class: 'btn ghost', href: '#/s/' + next, text: 'Next story' }) : null,
+      el('a', { class: 'btn ghost', href: '#/', text: 'All sets' })].filter(Boolean));
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function retry(){
+    const wrong = gaps.filter(g => !g.res.ok);
+    wrong.forEach(g => {
+      g.done = false; g.res = null; g.input.disabled = false; g.input.value = '';
+      g.holder.replaceChildren(el('span', { class: 'gno', text: gaps.indexOf(g) + 1 }), g.input, ' ', el('span', { class: 'inf', text: '(' + g.p.inf + ')' }));
+    });
+    resultBox.replaceChildren(); checkBtn.hidden = false; actions.replaceChildren(checkBtn);
+    wrong[0].input.focus();
+  }
+  checkBtn.addEventListener('click', check);
+  app.replaceChildren(
+    el('a', { class: 'back', href: '#/', text: '← All sets' }),
+    el('h1', { text: 'Story ' + n + ': ' + st.title, tabindex: '-1' }),
+    el('p', { class: 'lead', text: 'Put the verb in brackets into the past simple.' }),
+    el('div', { class: 'tools' }, czBtn),
+    resultBox, story, actions);
+  app.querySelector('h1').focus({ preventScroll: true });
+  window.scrollTo(0, 0);
+  gaps[0].input.focus({ preventScroll: true });
+}
+function route(){
+  const m = location.hash.match(/^#\/(l|d1|d2|s)\/(\d+)/);
+  if (!m) return home();
+  const n = parseInt(m[2], 10);
+  if (m[1] === 's') storyView(n); else if (m[1] === 'l') learnView(n); else drillView(m[1], n);
+}
+window.addEventListener('hashchange', route);
+document.getElementById('reset').addEventListener('click', () => {
+  if (confirm('Delete your saved scores?')) { store = {}; save(); route(); }
+});
+route();
+</script>
+</body>
+</html>
